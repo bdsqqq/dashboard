@@ -15,7 +15,7 @@ const mq = breakpoints.map(
 
 const FormWrap = styled.div`
     width: 30%;
-    margin: 8rem 4rem 4rem;
+    margin: 8rem 8rem 4rem;
     height: 10vh;
 `
 const Form = styled.form`
@@ -53,10 +53,8 @@ const CardContainer = styled.div`
     width: 100%;
     min-height: 24rem;
     height: auto;
-    background: #575151;
-    border-radius: 10px 10px 0 0;
     margin: 0 auto;
-    padding: 1em;
+    padding: 0 8em;
 
     display: flex;
     flex-wrap: wrap;
