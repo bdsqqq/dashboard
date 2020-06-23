@@ -1,13 +1,14 @@
 import React from 'react';
-import { app } from '../../firebase'
-import Folio from '../Folio'
+
+import Header from '../Header';
+import Folio from '../Folio';
 
 const Dashboard = () =>{
     return(
         <>
+            <Header />
             <h1>Hej dö world</h1>
             <Folio />
-            <button onClick={() => app.auth().signOut()}>Sign Out</button>
         </>
     )
 }
