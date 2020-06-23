@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 
 import { AuthProvider } from './Auth'
 import Routes from './routes'
