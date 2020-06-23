@@ -47,7 +47,8 @@ function Card(props:project){
 
     const CardWrapper = styled.div`
         position: relative;
-        margin: 4rem auto;
+        margin: 20px auto;
+        height: fit-content;
         width: 95%;
 
         ${mq[1]}{
