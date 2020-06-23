@@ -7,7 +7,6 @@ const Dashboard = () =>{
     return(
         <>
             <Header />
-            <h1>Hej dö world</h1>
             <Folio />
         </>
     )
