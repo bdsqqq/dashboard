@@ -32,14 +32,10 @@ const Login : React.SFC<RouteComponentProps> = ({ history }) => {
         <>
             <h1>Log in</h1>
             <form onSubmit={handleLogin}>
-                <label>
-                    Email
-          <input name="email" type="email" placeholder="Email" />
-                </label>
-                <label>
-                    Password
-          <input name="password" type="password" placeholder="Password" />
-                </label>
+                <label> Email </label>
+                <input name="email" type="email" placeholder="Email" />
+                <label> Password </label>
+                <input name="password" type="password" placeholder="Password" />
                 <button type="submit">Log in</button>
             </form>
         </>
