@@ -40,7 +40,7 @@ const SignOut = Styled.div`
     }
 `
 const SignOutText = Styled.span`
-    margin: 0 0.2\em;
+    margin: 0 0.2em;
 `
 
 const Header = () =>{
