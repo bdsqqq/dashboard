@@ -76,7 +76,7 @@ function Card(props:project){
         align-items: flex-start;
         justify-content: space-between;
         padding: 15px 15px 10px;
-        width: 90%;
+        width: 95%;
         
         background: rgba(0, 0, 0, 0.9);
 
