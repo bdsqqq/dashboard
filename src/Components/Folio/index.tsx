@@ -5,7 +5,9 @@ import { FiArrowRight } from 'react-icons/fi'
 import db from '../../firebase';
 
 import Card from '../FolioCard';
-import Loader from '../LoaderFolioCard'
+import Loader from '../LoaderFolioCard';
+import FolioDrawer from '../FolioDrawer';
+
 
 const breakpoints = [48, 64]
 
@@ -83,9 +85,10 @@ interface Project{
 }
 
 function Folio() {
-
+    const [visible, setVisible] = useState<boolean>(false)
     const [isLoaded, setIsloaded] = useState(false);
     const [newId, setNewId] = useState<string>('')
+
     const [projects, setProjects] = useState<Project[]>([]) //creates a state variable called projects and a method to update it
 
     useEffect(() => {
@@ -124,6 +127,10 @@ function Folio() {
         .catch(err => console.log(err));
     }
 
+    const onClose = () =>{
+        setVisible(false);
+    }
+
     return (
         <>
             <FormWrap>
@@ -150,6 +157,8 @@ function Folio() {
                     ))
                 }
             </CardContainer>
+            <button onClick={() => {setVisible(true)}}>Drawer</button>
+            <FolioDrawer visible={visible} onClose={onClose} />
         </>
     );
 }
