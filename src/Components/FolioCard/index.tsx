@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FiEdit3, FiInfo } from "react-icons/fi";
 
 interface project {
     nome: string;
@@ -46,7 +47,7 @@ function Card(props:project){
 
     const CardWrapper = styled.div`
         position: relative;
-        margin: 20px auto;
+        margin: 4rem auto;
         width: 95%;
 
         ${mq[1]}{
@@ -70,10 +71,22 @@ function Card(props:project){
     `
     
     const Meta = styled.div`
-        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
         padding: 15px 15px 10px;
-        color: white;
-        width: 100%;
+        width: 90%;
+        
+        background: rgba(0, 0, 0, 0.9);
+
+        color: #f2f2f2;
+        font-size: 1.6rem;
+
+        overflow: hidden;
+    `
+    const IconContainer = styled.div`
+    `
+    const MetaName = styled.div`
     `
 
     return(
@@ -81,7 +94,12 @@ function Card(props:project){
             <CardImage src={props.img_src} alt={"Imagem do projeto "+props.nome}/>
             <MetaWrapper>
                 <Meta>
-                    
+                    <MetaName>
+                        {props.nome}
+                    </MetaName>
+                    <IconContainer>
+                        <FiEdit3 /> <FiInfo />
+                    </IconContainer>
                 </Meta>
                 <span>
                 </span>
