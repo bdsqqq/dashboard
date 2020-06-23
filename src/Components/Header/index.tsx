@@ -40,14 +40,14 @@ const SignOut = Styled.div`
     }
 `
 const SignOutText = Styled.span`
-    margin: 0 8px;
+    margin: 0 0.2\em;
 `
 
 const Header = () =>{
     return(
         <Wrapper>
             <Logo><LogoImg src={LogoIcon} alt="Logotipo"/></Logo>
-            <SignOut onClick={() => app.auth().signOut()}> <SignOutText>SignOut</SignOutText> <FiLogOut /></SignOut>
+            <SignOut onClick={() => app.auth().signOut()}> <SignOutText>SignOut</SignOutText> <FiLogOut style={{height:"1em", top: ".125em",position: "relative"}} /></SignOut>
         </Wrapper>
     );
 }
