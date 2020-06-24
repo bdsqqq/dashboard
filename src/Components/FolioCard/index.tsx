@@ -2,13 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import { FiEdit3, FiInfo } from "react-icons/fi";
 
-interface project {
-    nome: string;
-    img_src: string;
-    id: string;
+interface FolioCardProps{
+    project: any;
+
+    setIsEditable: any;
+    setVisible: any;
+    setCurrentProject: any;
 }
 
-function Card(props:project){
+function Card(props:FolioCardProps){
 
     const breakpoints = [48, 64]
 
@@ -92,14 +94,23 @@ function Card(props:project){
 
     return(
         <CardWrapper>
-            <CardImage src={props.img_src} alt={"Imagem do projeto "+props.nome}/>
+            <CardImage src={props.project.img} alt={"Imagem do projeto "+props.project.projeto}/>
             <MetaWrapper>
                 <Meta>
                     <MetaName>
-                        {props.nome}
+                        {props.project.projeto}
                     </MetaName>
                     <IconContainer>
-                        <FiEdit3 /> <FiInfo />
+                        <FiEdit3 onClick={() => {
+                            props.setCurrentProject(props.project)
+                            props.setVisible(true);
+                            props.setIsEditable(true);
+                        }} /> 
+                        <FiInfo onClick={() => {
+                            props.setCurrentProject(props.project)
+                            props.setVisible(true);
+                            props.setIsEditable(false);
+                        }} />
                     </IconContainer>
                 </Meta>
                 <span>

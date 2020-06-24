@@ -85,7 +85,9 @@ interface Project{
 }
 
 function Folio() {
-    const [visible, setVisible] = useState<boolean>(false)
+    const [visible, setVisible] = useState<boolean>(false);
+    const [isEditable, setIsEditable] = useState<boolean | undefined>()
+    const [currentProject, setCurrentProject] = useState<Project>();
     const [isLoaded, setIsloaded] = useState(false);
     const [newId, setNewId] = useState<string>('')
 
@@ -151,14 +153,22 @@ function Folio() {
                 {isLoaded === false ? <> <Loader />  <Loader />  <Loader /></> :
                     projects.map(project => (
                         <Card
-                            nome={project.projeto}
-                            img_src={project.img}
-                            id={project.id} />
+                            project={project}
+
+                            setIsEditable={setIsEditable}
+                            setVisible={setVisible}
+                            setCurrentProject={setCurrentProject}
+                        />
                     ))
                 }
             </CardContainer>
-            <button onClick={() => {setVisible(true)}}>Drawer</button>
-            <FolioDrawer visible={visible} onClose={onClose} />
+            <FolioDrawer 
+                visible={visible} 
+                onClose={onClose}
+                isEditable={isEditable}
+                flipIsEditable={() => setIsEditable(!isEditable)} 
+                project={currentProject} 
+            />
         </>
     );
 }
