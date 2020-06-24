@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FiArrowRight } from 'react-icons/fi'
 
-import db from '../../firebase';
+import { db } from '../../firebase';
 
 import Card from '../FolioCard';
 import Loader from '../LoaderFolioCard';
@@ -94,13 +94,11 @@ function Folio() {
     const [projects, setProjects] = useState<Project[]>([]) //creates a state variable called projects and a method to update it
 
     useEffect(() => {
-        db.ref('/projects').on('value', (snapshot) => { //creates a reference to /projects on the firebase db and creates a snapshot on each value change
-            let projects:Project[] = [] ; // creates an empty array called projects to store the data from snapshots
-            snapshot.forEach(childSnapshot => {
-                projects.push({ ...childSnapshot.val(), key: childSnapshot.key }) //adds each value from a snapshot to the projects array
-            });
-            setProjects(projects) //sets the projects state to be equal to the projects array
-            setIsloaded(true);
+        db.collection("projects").get()
+        .then((snapshot) => {
+            snapshot.forEach((doc) => {
+                console.log(doc.id, doc.data)
+            })
         })
     }, []); //dep is an empty array so this effect will be called only once
 
@@ -113,15 +111,7 @@ function Folio() {
     const onSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if(newId === '') return;
-        db.ref(`projects/${newId}`).set({
-            id: newId,
-            ano: "",
-            demo: "",
-            img: "",
-            projeto: "",
-            role: "",
-            source: "",
-            tools: []
+        
         })
         .then(res => {
             console.log('then')
