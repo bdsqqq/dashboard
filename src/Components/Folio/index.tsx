@@ -90,16 +90,17 @@ function Folio() {
     const [currentProject, setCurrentProject] = useState<Project>();
     const [isLoaded, setIsloaded] = useState(false);
 
-    const  inputRef:React.MutableRefObject<any | undefined> = useRef();
+    const  inputRef:React.MutableRefObject<any | undefined> = useRef();//type is any beacuse i'm using StyledComponents and HTMLInputElement doesn't work. <StyledComponent<Input, any, {}, never> doesn't work either
 
     const [projects, setProjects] = useState<Project[]>([]) //creates a state variable called projects and a method to update it
 
     useEffect(() => {
         db.collection("projects").get()
         .then((snapshot) => {
-            snapshot.forEach((doc) => {
-                console.log(doc.id, doc.data())
-            })
+            let projects:Project[] = [];
+            snapshot.forEach(doc => projects.push({... doc.data() as Project}))
+            setProjects( projects );
+            setIsloaded(true);
         })
     }, []); //dep is an empty array so this effect will be called only once
 
