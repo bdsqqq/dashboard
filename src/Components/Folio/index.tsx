@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { FiArrowRight } from 'react-icons/fi'
 
@@ -89,7 +89,8 @@ function Folio() {
     const [isEditable, setIsEditable] = useState<boolean | undefined>()
     const [currentProject, setCurrentProject] = useState<Project>();
     const [isLoaded, setIsloaded] = useState(false);
-    const [newId, setNewId] = useState<string>('')
+
+    const  inputRef:React.MutableRefObject<any | undefined> = useRef();
 
     const [projects, setProjects] = useState<Project[]>([]) //creates a state variable called projects and a method to update it
 
@@ -104,16 +105,12 @@ function Folio() {
 
     console.log(projects, "array");
 
-    const onChange = (event:React.ChangeEvent<HTMLInputElement>) => {
-        setNewId(event.target.value);
-    }
-
     const onSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if(newId === '') return;
+        if(inputRef.current.value === '') return;
         
-        db.collection('projects').doc(newId).set({
-            id: newId,
+        db.collection('projects').doc(inputRef.current.value).set({
+            id: inputRef.current.value,
             ano: "",
             demo: "",
             img: "",
@@ -138,12 +135,11 @@ function Folio() {
         <>
             <FormWrap>
                 <Form onSubmit={onSubmit}>
-                    <InputNewId 
-                            type="text"
-                            name="newId"
-                            placeholder="Cadastre um Projeto..."
-                            value={newId}
-                            onChange={onChange}
+                    <InputNewId
+                        type="text"
+                        name="newId"
+                        placeholder="Cadastre um Projeto..."
+                        ref={inputRef}
                     />
                     <ButtonCreate type="submit"><FiArrowRight style={{height:"1em", top: ".125em",position: "relative"}} /></ButtonCreate>
                 </Form>
