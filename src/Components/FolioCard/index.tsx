@@ -69,6 +69,7 @@ function Card(props:FolioCardProps){
         width: 95%;
         display: block;
         height: auto;
+        border-radius: 3px;
         object-fit: cover;
         transition: all 200ms cubic-bezier(0.785, 0.010, 0.000, 1.415);
     `
