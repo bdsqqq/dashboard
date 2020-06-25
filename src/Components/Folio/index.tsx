@@ -97,7 +97,7 @@ function Folio() {
         db.collection("projects").get()
         .then((snapshot) => {
             snapshot.forEach((doc) => {
-                console.log(doc.id, doc.data)
+                console.log(doc.id, doc.data())
             })
         })
     }, []); //dep is an empty array so this effect will be called only once
@@ -112,6 +112,17 @@ function Folio() {
         event.preventDefault();
         if(newId === '') return;
         
+        db.collection('projects').doc(newId).set({
+            id: newId,
+            ano: "",
+            demo: "",
+            img: "",
+            projeto: "",
+            role: "",
+            source: "",
+            tools: [
+                "",
+            ] 
         })
         .then(res => {
             console.log('then')
