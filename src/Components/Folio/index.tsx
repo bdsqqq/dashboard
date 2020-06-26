@@ -98,7 +98,7 @@ function Folio() {
         db.collection("projects").get()
         .then((snapshot) => {
             let projects:Project[] = [];
-            snapshot.forEach(doc => projects.push({... doc.data() as Project}))
+            snapshot.forEach(doc => projects.push({...doc.data() as Project}))
             setProjects( projects );
             setIsloaded(true);
         })
