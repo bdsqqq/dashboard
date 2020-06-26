@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { FiEdit3, FiInfo } from 'react-icons/fi'
 import { Drawer } from 'antd';
 
+import useDynamicRefs from '../../hooks/useDynamicRefs'
+
 import 'antd/dist/antd.css';
 
 interface FolioDrawerProps {
@@ -88,6 +90,8 @@ const FakeInput = styled.p`
     color: #f3f3f3;
 `
 const FolioDrawer = (props: FolioDrawerProps) => {
+    const [getRef, setRef] = useDynamicRefs();
+
     return (
         <Drawer
             width={640}
@@ -155,7 +159,9 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                             <Label>Role</Label>
                             <FakeInput>{props.project?.role}</FakeInput>
 
-
+                            { props.project?.tools.map(tool => (
+                                <span>{ tool + props.project?.tools.indexOf(tool) }</span>
+                            )) }
 
                         </Body>
                     </>
