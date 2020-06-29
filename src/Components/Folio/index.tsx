@@ -82,6 +82,7 @@ interface Project{
     role: string;
     source: string;
     tools: string[];
+    order: string;
 }
 
 function Folio() {
@@ -90,7 +91,7 @@ function Folio() {
     const [currentProject, setCurrentProject] = useState<Project>();
     const [isLoaded, setIsloaded] = useState(false);
 
-    const  inputRef:React.MutableRefObject<any | undefined> = useRef();//type is any beacuse i'm using StyledComponents and HTMLInputElement doesn't work. <StyledComponent<Input, any, {}, never> doesn't work either
+    const inputRef:React.MutableRefObject<any | undefined> = useRef();//type is any beacuse i'm using StyledComponents and HTMLInputElement doesn't work. <StyledComponent<Input, any, {}, never> doesn't work either
 
     const [projects, setProjects] = useState<Project[]>([]) //creates a state variable called projects and a method to update it
 
@@ -98,7 +99,7 @@ function Folio() {
         db.collection("projects").get()
         .then((snapshot) => {
             let projects:Project[] = [];
-            snapshot.forEach(doc => projects.push({...doc.data() as Project}))
+            snapshot.forEach(doc => projects.push({...doc.data() as Project}));
             setProjects( projects );
             setIsloaded(true);
         })
@@ -120,10 +121,11 @@ function Folio() {
             source: "",
             tools: [
                 "",
-            ] 
+            ],
+            order: "0",
         })
         .then(res => {
-            console.log('then')
+            console.log(res)
         })
         .catch(err => console.log(err));
     }
