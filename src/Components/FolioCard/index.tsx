@@ -26,13 +26,6 @@ function Card(props:FolioCardProps){
         max-height: 105%;
         overflow: auto;
 
-        ${mq[1]}{
-            transform: scale(0);
-            transform-origin: 50% 50%;
-            transition: all 100ms ease-out;
-            visibility: hidden;
-        }
-
         &::-webkit-scrollbar{
             width: 0.25rem;
             height: 0.25rem;
@@ -52,18 +45,6 @@ function Card(props:FolioCardProps){
         margin: 20px auto;
         height: fit-content;
         width: 95%;
-
-        ${mq[1]}{
-            &:hover {
-                cursor: pointer;
-
-                & ${MetaWrapper} {
-                    transform: scale(1);
-                    transition: all 200ms cubic-bezier(0.785, 0.010, 0.000, 1.415);
-                    visibility: visible;
-                }
-            } 
-        }
     `
     const CardImage = styled.img`
         width: 95%;
@@ -78,9 +59,10 @@ function Card(props:FolioCardProps){
         display: flex;
         align-items: flex-start;
         justify-content: space-between;
+
+        border-radius: 3px;
         padding: 15px 15px 10px;
-        width: 95%;
-        
+        width: 95%;        
         background: rgba(0, 0, 0, 0.9);
 
         color: #f2f2f2;
@@ -88,7 +70,12 @@ function Card(props:FolioCardProps){
 
         overflow: hidden;
     `
-    const IconContainer = styled.div`
+    const IconContainer = styled.div`        
+        > * {
+            cursor: pointer;
+
+            margin: 0 5px;
+        }
     `
     const MetaName = styled.div`
     `
