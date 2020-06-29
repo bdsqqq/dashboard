@@ -21,6 +21,7 @@ interface FolioDrawerProps {
         role: string;
         source: string;
         tools: string[];
+        order: string;
     }
 }
 
@@ -43,8 +44,6 @@ const Header = styled.div`
 const Body = styled.div`
     margin: 1em;
     padding: 2em;
-
-    background-color: #8f8f8f;
 `
 const Form = styled.form`
     max-width: 700px;
@@ -89,6 +88,11 @@ const FakeInput = styled.p`
     border-bottom: 2px solid #bebed2;
     color: #f3f3f3;
 `
+const ToolsWrapper = styled.div`
+    width: 100%;
+    padding: 10px -1em;
+    margin: -1em auto 0;
+`
 const FolioDrawer = (props: FolioDrawerProps) => {
     const [getRef, setRef] = useDynamicRefs();
 
@@ -99,6 +103,8 @@ const FolioDrawer = (props: FolioDrawerProps) => {
             closable={false}
             onClose={props.onClose}
             visible={props.visible}
+            style={{backgroundColor: 'rgba(0, 0, 0, 0.7)'}}
+            drawerStyle={{backgroundColor: '#222'}}
         >
             <Wrapper>
                 {props.isEditable
@@ -108,29 +114,41 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                             <FiInfo style={{ cursor: "pointer", height: "1em", top: ".125em", position: "relative", }} onClick={props.flipIsEditable} />
                         </Header>
                         <Body>
-                            <Label>Id</Label>
-                            <Input type="text"/>
+                            <Form>
+                                <Label>Id</Label>
+                                <FakeInput>{props.project?.id}</FakeInput>
 
-                            <Label>Projeto</Label>
-                            <Input type="text"/>
+                                <Label>Projeto</Label>
+                                <Input type="text" />
 
-                            <Label>Demo link</Label>
-                            <Input type="text"/>
+                                <Label>Demo link</Label>
+                                <Input type="text" />
 
-                            <Label>Source Link (vazio se privado)</Label>
-                            <Input type="text"/>
+                                <Label>Source Link (vazio se privado)</Label>
+                                <Input type="text" />
 
-                            <Label>Img Link</Label>
-                            <Input type="text"/>
+                                <Label>Img Link</Label>
+                                <Input type="text" />
 
-                            <Label>Ano</Label>
-                            <Input type="text"/>
+                                <Label>Ano</Label>
+                                <Input type="text" />
 
-                            <Label>Role</Label>
-                            <Input type="text"/>
+                                <Label>Order</Label>
+                                <Input type="text" />
 
-                            
+                                <Label>Role</Label>
+                                <Input type="text" />
 
+                                <Label>Tools</Label>
+                                <ToolsWrapper>
+                                {props.project?.tools.map(tool => (
+                                    <>
+                                        <Label>Tool {props.project?.tools.indexOf(tool) as number + 1}</Label>
+                                        <Input type="text" defaultValue={tool} />
+                                    </>
+                                ))}
+                                </ToolsWrapper>
+                            </Form>
                         </Body>
                     </> : <>
                         <Header>
@@ -149,20 +167,28 @@ const FolioDrawer = (props: FolioDrawerProps) => {
 
                             <Label>Source Link (vazio se privado)</Label>
                             <FakeInput>{props.project?.source}</FakeInput>
-                            
+
                             <Label>Img Link</Label>
                             <FakeInput>{props.project?.img}</FakeInput>
 
                             <Label>Ano</Label>
                             <FakeInput>{props.project?.ano}</FakeInput>
 
+                            <Label>Order</Label>
+                            <FakeInput>{props.project?.order}</FakeInput>
+
                             <Label>Role</Label>
                             <FakeInput>{props.project?.role}</FakeInput>
 
-                            { props.project?.tools.map(tool => (
-                                <span>{ tool + props.project?.tools.indexOf(tool) }</span>
-                            )) }
-
+                            <Label>Tools</Label>
+                            <ToolsWrapper>
+                                {props.project?.tools.map(tool => (
+                                    <>
+                                        <Label>Tool {props.project?.tools.indexOf(tool) as number + 1}</Label>
+                                        <FakeInput>{tool}</FakeInput>
+                                    </>
+                                ))}
+                            </ToolsWrapper>
                         </Body>
                     </>
                 }
