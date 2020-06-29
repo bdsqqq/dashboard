@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import { FiEdit3, FiInfo } from 'react-icons/fi'
 import { Drawer } from 'antd';
@@ -95,7 +95,13 @@ const ToolsWrapper = styled.div`
 `
 const FolioDrawer = (props: FolioDrawerProps) => {
     const [getRef, setRef] = useDynamicRefs();
+    const refProjeto = useRef<any>();
 
+    const onSubmit = (event:React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        console.log(refProjeto.current.value)
+    }
+    
     return (
         <Drawer
             width={640}
@@ -114,40 +120,42 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                             <FiInfo style={{ cursor: "pointer", height: "1em", top: ".125em", position: "relative", }} onClick={props.flipIsEditable} />
                         </Header>
                         <Body>
-                            <Form>
+                            <Form onSubmit={onSubmit}>
                                 <Label>Id</Label>
                                 <FakeInput>{props.project?.id}</FakeInput>
 
                                 <Label>Projeto</Label>
-                                <Input type="text" />
+                                <Input ref={refProjeto} id="inputProjeto" type="text" />
 
                                 <Label>Demo link</Label>
-                                <Input type="text" />
+                                <Input id="inputDemo" type="text" />
 
                                 <Label>Source Link (vazio se privado)</Label>
-                                <Input type="text" />
+                                <Input id="inputSource" type="text" />
 
                                 <Label>Img Link</Label>
-                                <Input type="text" />
+                                <Input id="inputLink" type="text" />
 
                                 <Label>Ano</Label>
-                                <Input type="text" />
+                                <Input id="inputAno" type="text" />
 
                                 <Label>Order</Label>
-                                <Input type="text" />
+                                <Input id="inputOrder" type="text" />
 
                                 <Label>Role</Label>
-                                <Input type="text" />
+                                <Input id="inputRole" type="text" />
 
                                 <Label>Tools</Label>
                                 <ToolsWrapper>
                                 {props.project?.tools.map(tool => (
-                                    <>
+                                    <React.Fragment key={props.project?.tools.indexOf(tool)}>
                                         <Label>Tool {props.project?.tools.indexOf(tool) as number + 1}</Label>
-                                        <Input type="text" defaultValue={tool} />
-                                    </>
+                                        <Input id={`inputTool${props.project?.tools.indexOf(tool)}`} type="text" defaultValue={tool} />
+                                    </React.Fragment>
                                 ))}
                                 </ToolsWrapper>
+
+                                <button type="submit">Hej Do</button>
                             </Form>
                         </Body>
                     </> : <>
@@ -183,10 +191,10 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                             <Label>Tools</Label>
                             <ToolsWrapper>
                                 {props.project?.tools.map(tool => (
-                                    <>
+                                    <React.Fragment key={props.project?.tools.indexOf(tool)}>
                                         <Label>Tool {props.project?.tools.indexOf(tool) as number + 1}</Label>
                                         <FakeInput>{tool}</FakeInput>
-                                    </>
+                                    </React.Fragment>
                                 ))}
                             </ToolsWrapper>
                         </Body>
