@@ -96,7 +96,9 @@ function Folio() {
     const [projects, setProjects] = useState<Project[]>([]) //creates a state variable called projects and a method to update it
 
     useEffect(() => {
-        db.collection("projects").get()
+        db.collection("projects")
+        .orderBy("order", "asc")
+        .get()
         .then((snapshot) => {
             let projects:Project[] = [];
             snapshot.forEach(doc => projects.push({...doc.data() as Project}));
