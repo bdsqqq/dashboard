@@ -4,26 +4,9 @@ import { FiEdit3, FiInfo } from 'react-icons/fi'
 import { Drawer } from 'antd';
 
 import useDynamicRefs from '../../hooks/useDynamicRefs'
+import useObjIsEmpty from '../../hooks/useObjIsEmpty'
 
 import 'antd/dist/antd.css';
-
-interface FolioDrawerProps {
-    visible: boolean;
-    onClose: any;
-    flipIsEditable: any;
-    isEditable: boolean | undefined;
-    project?: {
-        id: string;
-        ano: string;
-        demo: string;
-        img: string;
-        projeto: string;
-        role: string;
-        source: string;
-        tools: string[];
-        order: string;
-    }
-}
 
 const Wrapper = styled.div`
     display: flex;
@@ -93,8 +76,27 @@ const ToolsWrapper = styled.div`
     padding: 10px -1em;
     margin: -1em auto 0;
 `
+interface FolioDrawerProps {
+    visible: boolean;
+    onClose: any;
+    flipIsEditable: any;
+    isEditable: boolean | undefined;
+    project?: {
+        id: string;
+        ano: string;
+        demo: string;
+        img: string;
+        projeto: string;
+        role: string;
+        source: string;
+        tools: string[];
+        order: string;
+    }
+}
+
 const FolioDrawer = (props: FolioDrawerProps) => {
     const [getRef, setRef] = useDynamicRefs();
+    const objIsEmpty = useObjIsEmpty();
     //const refProjeto = useRef<any>();
     //const refDemo = useRef<any>();
     //const refSource = useRef<any>();
@@ -116,9 +118,27 @@ const FolioDrawer = (props: FolioDrawerProps) => {
     const onSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         //console.log(refs.refProjeto.current.value);
-        Object.entries(refs).map(([key, value]:any) => {
-            console.log(key, value.current.value)
-        })
+       // Object.entries(refs).map(([refName, ref]:any) => console.log(refName, ref.current.value));
+
+        //Logica criar o objeto de update
+        let changes: any = {};
+
+        Object.entries(refs).map(([refName, ref]:any) => {
+            if(ref.current.value != ref.current.defaultValue){
+                changes[ref.current.name] = ref.current.value
+                console.log(refName, "added")
+            }
+        });
+
+        if(!objIsEmpty(changes)){
+            console.log('houve mudanças', changes)
+        } else {
+            console.log('não houve mudança')
+        }
+
+        //let projectRef = db.collection("projects").doc(props.project?.id);
+
+        //return projectRef.update({})
     }
     
     return (
@@ -144,25 +164,25 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                 <FakeInput>{props.project?.id}</FakeInput>
 
                                 <Label>Projeto</Label>
-                                <Input ref={refs.refProjeto} id="inputProjeto" type="text" />
+                                <Input name="projeto" defaultValue={props.project?.projeto} ref={refs.refProjeto} id="inputProjeto" type="text" />
 
                                 <Label>Demo link</Label>
-                                <Input ref={refs.refDemo} id="inputDemo" type="text" />
+                                <Input name="demo" defaultValue={props.project?.demo} ref={refs.refDemo} id="inputDemo" type="text" />
 
                                 <Label>Source Link (vazio se privado)</Label>
-                                <Input ref={refs.refSource} id="inputSource" type="text" />
+                                <Input name="source" defaultValue={props.project?.source} ref={refs.refSource} id="inputSource" type="text" />
 
                                 <Label>Img Link</Label>
-                                <Input ref={refs.refImg} id="inputLink" type="text" />
+                                <Input name="img" defaultValue={props.project?.img} ref={refs.refImg} id="inputLink" type="text" />
 
                                 <Label>Ano</Label>
-                                <Input ref={refs.refAno} id="inputAno" type="text" />
+                                <Input name="ano" defaultValue={props.project?.ano} ref={refs.refAno} id="inputAno" type="text" />
 
                                 <Label>Order</Label>
-                                <Input ref={refs.refOrder} id="inputOrder" type="text" />
+                                <Input name="order" defaultValue={props.project?.order} ref={refs.refOrder} id="inputOrder" type="text" />
 
                                 <Label>Role</Label>
-                                <Input ref={refs.refRole} id="inputRole" type="text" />
+                                <Input name="role" defaultValue={props.project?.role} ref={refs.refRole} id="inputRole" type="text" />
 
                                 <Label>Tools</Label>
                                 <ToolsWrapper>
