@@ -95,11 +95,30 @@ const ToolsWrapper = styled.div`
 `
 const FolioDrawer = (props: FolioDrawerProps) => {
     const [getRef, setRef] = useDynamicRefs();
-    const refProjeto = useRef<any>();
+    //const refProjeto = useRef<any>();
+    //const refDemo = useRef<any>();
+    //const refSource = useRef<any>();
+    //const refImg = useRef<any>();
+    //const refAno = useRef<any>();
+    //const refOrder = useRef<any>();
+    //const refRole = useRef<any>();
+
+    const refs = {
+        refProjeto : useRef<any>(),
+        refDemo : useRef<any>(),
+        refSource : useRef<any>(),
+        refImg : useRef<any>(),
+        refAno : useRef<any>(),
+        refOrder : useRef<any>(),
+        refRole : useRef<any>(),
+    }
 
     const onSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(refProjeto.current.value)
+        //console.log(refs.refProjeto.current.value);
+        Object.entries(refs).map(([key, value]:any) => {
+            console.log(key, value.current.value)
+        })
     }
     
     return (
@@ -125,25 +144,25 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                 <FakeInput>{props.project?.id}</FakeInput>
 
                                 <Label>Projeto</Label>
-                                <Input ref={refProjeto} id="inputProjeto" type="text" />
+                                <Input ref={refs.refProjeto} id="inputProjeto" type="text" />
 
                                 <Label>Demo link</Label>
-                                <Input id="inputDemo" type="text" />
+                                <Input ref={refs.refDemo} id="inputDemo" type="text" />
 
                                 <Label>Source Link (vazio se privado)</Label>
-                                <Input id="inputSource" type="text" />
+                                <Input ref={refs.refSource} id="inputSource" type="text" />
 
                                 <Label>Img Link</Label>
-                                <Input id="inputLink" type="text" />
+                                <Input ref={refs.refImg} id="inputLink" type="text" />
 
                                 <Label>Ano</Label>
-                                <Input id="inputAno" type="text" />
+                                <Input ref={refs.refAno} id="inputAno" type="text" />
 
                                 <Label>Order</Label>
-                                <Input id="inputOrder" type="text" />
+                                <Input ref={refs.refOrder} id="inputOrder" type="text" />
 
                                 <Label>Role</Label>
-                                <Input id="inputRole" type="text" />
+                                <Input ref={refs.refRole} id="inputRole" type="text" />
 
                                 <Label>Tools</Label>
                                 <ToolsWrapper>
