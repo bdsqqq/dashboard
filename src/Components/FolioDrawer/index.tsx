@@ -134,10 +134,10 @@ const FolioDrawer = (props: FolioDrawerProps) => {
         if(!objIsEmpty(changes)){
             let projectRef = db.collection("projects").doc(props.project?.id);
 
-            return projectRef.update(changes).then(function() {
+            return projectRef.update(changes).then(() => {
                 console.log("Document successfully updated!");
             })
-            .catch(function(error) {
+            .catch((error) => {
                 // The document probably doesn't exist.
                 console.error("Error updating document: ", error);
             });
@@ -146,6 +146,14 @@ const FolioDrawer = (props: FolioDrawerProps) => {
         }
     }
     
+    const handleDelete = () => {
+        db.collection("projects").doc(props.project?.id).delete().then(() => {
+            console.log("Document successfully deleted!");
+        }).catch((error) => {
+            console.error("Error removing document: ", error);
+        });
+    }
+
     return (
         <Drawer
             width={640}
@@ -201,6 +209,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
 
                                 <button type="submit">Hej Do</button>
                             </Form>
+                                <button onClick={handleDelete}>Delete</button>
                         </Body>
                     </> : <>
                         <Header>
