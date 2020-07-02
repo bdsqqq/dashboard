@@ -98,13 +98,7 @@ interface FolioDrawerProps {
 const FolioDrawer = (props: FolioDrawerProps) => {
     const [getRef, setRef] = useDynamicRefs();
     const objIsEmpty = useObjIsEmpty();
-    //const refProjeto = useRef<any>();
-    //const refDemo = useRef<any>();
-    //const refSource = useRef<any>();
-    //const refImg = useRef<any>();
-    //const refAno = useRef<any>();
-    //const refOrder = useRef<any>();
-    //const refRole = useRef<any>();
+
 
     const refs = {
         refProjeto : useRef<any>(),
@@ -118,10 +112,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
 
     const onSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        //console.log(refs.refProjeto.current.value);
-       // Object.entries(refs).map(([refName, ref]:any) => console.log(refName, ref.current.value));
 
-        //Logica criar o objeto de update
         let changes: any = {};
 
         Object.entries(refs).map(([refName, ref]:any) => {
