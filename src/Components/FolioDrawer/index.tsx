@@ -206,7 +206,13 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                 <button type="submit">Hej Do</button>
                             </Form>
                                 <button onClick={handleDelete}>Delete</button>
-                                
+                                <button onClick={() => {
+                                    console.log(
+                                        props.project?.tools.map(tool => (
+                                            getRef(props.project?.tools.indexOf(tool).toString() as string))
+                                        )
+                                    )
+                                }}>I'm scared </button>
                         </Body>
                     </> : <>
                         <Header>
