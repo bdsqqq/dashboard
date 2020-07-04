@@ -104,10 +104,9 @@ function Folio() {
             snapshot.forEach(doc => projects.push({...doc.data() as Project}));
             setProjects( projects );
             setIsloaded(true);
+            console.log(projects, "fetched projects");
         })
     }, []); //dep is an empty array so this effect will be called only once
-
-    console.log(projects, "array");
 
     const onSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
