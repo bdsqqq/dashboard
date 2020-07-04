@@ -82,7 +82,7 @@ interface FolioDrawerProps {
     onClose: any;
     flipIsEditable: any;
     isEditable: boolean | undefined;
-    project?: {
+    project: {
         id: string;
         ano: string;
         demo: string;

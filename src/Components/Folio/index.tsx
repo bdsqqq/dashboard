@@ -164,6 +164,8 @@ function Folio() {
                     ))
                 }
             </CardContainer>
+            
+            {currentProject !== undefined &&
             <FolioDrawer 
                 visible={visible} 
                 onClose={onClose}
@@ -171,6 +173,7 @@ function Folio() {
                 flipIsEditable={() => setIsEditable(!isEditable)} 
                 project={currentProject} 
             />
+            }
         </>
     );
 }
