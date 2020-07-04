@@ -129,8 +129,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                 .then(() => {
                     console.log("Document successfully updated!");
                 }
-            )
-            .catch((error) => {
+            ).catch((error) => {
                 // The document probably doesn't exist.
                 console.error("Error updating document: ", error);
             });
@@ -171,26 +170,53 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                 <FakeInput>{props.project?.id}</FakeInput>
 
                                 <Label>Projeto</Label>
-                                <Input name="projeto" defaultValue={props.project?.projeto} ref={refs.refProjeto} id="inputProjeto" type="text" />
-
+                                <Input 
+                                    name="projeto"
+                                    defaultValue={props.project?.projeto}
+                                    ref={refs.refProjeto}
+                                    id="inputProjeto" type="text" 
+                                />
                                 <Label>Demo link</Label>
-                                <Input name="demo" defaultValue={props.project?.demo} ref={refs.refDemo} id="inputDemo" type="text" />
-
+                                <Input 
+                                    name="demo"
+                                    defaultValue={props.project?.demo}
+                                    ref={refs.refDemo}
+                                    id="inputDemo" type="text" 
+                                />
                                 <Label>Source Link (vazio se privado)</Label>
-                                <Input name="source" defaultValue={props.project?.source} ref={refs.refSource} id="inputSource" type="text" />
-
+                                <Input 
+                                    name="source"
+                                    defaultValue={props.project?.source}
+                                    ref={refs.refSource}
+                                    id="inputSource" type="text" 
+                                />
                                 <Label>Img Link</Label>
-                                <Input name="img" defaultValue={props.project?.img} ref={refs.refImg} id="inputLink" type="text" />
-
+                                <Input 
+                                    name="img"
+                                    defaultValue={props.project?.img}
+                                    ref={refs.refImg}
+                                    id="inputLink" type="text" 
+                                />
                                 <Label>Ano</Label>
-                                <Input name="ano" defaultValue={props.project?.ano} ref={refs.refAno} id="inputAno" type="text" />
-
+                                <Input 
+                                    name="ano"
+                                    defaultValue={props.project?.ano}
+                                    ref={refs.refAno}
+                                    id="inputAno" type="text" 
+                                />
                                 <Label>Order</Label>
-                                <Input name="order" defaultValue={props.project?.order} ref={refs.refOrder} id="inputOrder" type="text" />
-
+                                <Input 
+                                    name="order"
+                                    defaultValue={props.project?.order}
+                                    ref={refs.refOrder}
+                                    id="inputOrder" type="text" 
+                                />
                                 <Label>Role</Label>
-                                <Input name="role" defaultValue={props.project?.role} ref={refs.refRole} id="inputRole" type="text" />
-
+                                <Input 
+                                    name="role" defaultValue={props.project?.role}
+                                    ref={refs.refRole}
+                                    id="inputRole" type="text" 
+                                />
                                 <Label>Tools</Label>
                                 <ToolsWrapper>
                                 {props.project?.tools.map(tool => (
@@ -220,7 +246,14 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                     </> : <>
                         <Header>
                             <span>Edição Desabilitada</span>
-                            <FiEdit3 style={{ cursor: "pointer", height: "1em", top: ".125em", position: "relative", }} onClick={props.flipIsEditable} />
+                            <FiEdit3 
+                                style={{ 
+                                    cursor: "pointer",
+                                    height: "1em",
+                                    top: ".125em",
+                                    position: "relative", 
+                                }} 
+                                onClick={props.flipIsEditable} />
                         </Header>
                         <Body>
                             <Label>Id</Label>
@@ -251,7 +284,9 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                             <ToolsWrapper>
                                 {props.project?.tools.map(tool => (
                                     <React.Fragment key={props.project?.tools.indexOf(tool)}>
-                                        <Label>Tool {props.project?.tools.indexOf(tool) as number + 1}</Label>
+                                        <Label>
+                                            Tool {props.project?.tools.indexOf(tool) as number + 1}
+                                        </Label>
                                         <FakeInput>{tool}</FakeInput>
                                     </React.Fragment>
                                 ))}
