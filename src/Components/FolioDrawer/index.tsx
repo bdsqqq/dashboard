@@ -116,7 +116,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
         let changes: any = {};
 
         Object.entries(refs).map(([refName, ref]:any) => {
-            if(ref.current.value != ref.current.defaultValue){
+            if(ref.current.value !== ref.current.defaultValue){
                 changes[ref.current.name] = ref.current.value
                 console.log(refName, "added")
             }
