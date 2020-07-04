@@ -155,6 +155,7 @@ function Folio() {
                 {isLoaded === false ? <> <Loader />  <Loader />  <Loader /></> :
                     projects.map(project => (
                         <Card
+                            key={project.id}
                             project={project}
 
                             setIsEditable={setIsEditable}
