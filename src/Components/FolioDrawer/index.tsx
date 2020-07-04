@@ -193,7 +193,12 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                 {props.project?.tools.map(tool => (
                                     <React.Fragment key={props.project?.tools.indexOf(tool)}>
                                         <Label>Tool {props.project?.tools.indexOf(tool) as number + 1}</Label>
-                                        <Input id={`inputTool${props.project?.tools.indexOf(tool)}`} type="text" defaultValue={tool} />
+                                        <Input 
+                                            id={`inputTool${props.project?.tools.indexOf(tool)}`}
+                                            type="text" 
+                                            defaultValue={tool} 
+                                            ref={setRef(props.project?.tools.indexOf(tool).toString() as string) as React.RefObject<HTMLInputElement>} 
+                                        />
                                     </React.Fragment>
                                 ))}
                                 </ToolsWrapper>
@@ -201,6 +206,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                 <button type="submit">Hej Do</button>
                             </Form>
                                 <button onClick={handleDelete}>Delete</button>
+                                
                         </Body>
                     </> : <>
                         <Header>
