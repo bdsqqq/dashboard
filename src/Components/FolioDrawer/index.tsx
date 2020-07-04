@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { FiEdit3, FiInfo } from 'react-icons/fi'
 import { Drawer } from 'antd';
@@ -99,7 +99,8 @@ const FolioDrawer = (props: FolioDrawerProps) => {
     const [getRef, setRef] = useDynamicRefs();
     const objIsEmpty = useObjIsEmpty();
 
-    const tools = props.project.tools;
+    const [tools, setTools] = useState(props.project.tools);
+    console.log("FolioDrawer reRendered")
 
     const refs = {
         refProjeto : useRef<any>(),
@@ -231,6 +232,13 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                         />
                                     </React.Fragment>
                                 ))}
+                                    <button onClick={() => {
+                                        console.log(tools, "tools antes do setTools");
+                                        setTools(tools => tools.concat(""));
+                                        console.log(tools, "tools depois do setTools");
+                                    }}>
+                                        Add tool
+                                    </button>
                                 </ToolsWrapper>
 
                                 <button type="submit">Hej Do</button>
