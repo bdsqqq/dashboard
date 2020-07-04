@@ -115,19 +115,21 @@ const FolioDrawer = (props: FolioDrawerProps) => {
 
         let changes: any = {};
 
-        Object.entries(refs).map(([refName, ref]:any) => {
-            if(ref.current.value !== ref.current.defaultValue){
-                changes[ref.current.name] = ref.current.value
-                console.log(refName, "added")
+        Object.entries(refs).map(([refKey, refValue]:any) => {
+            if(refValue.current.value !== refValue.current.defaultValue){
+                changes[refValue.current.name] = refValue.current.value
+                console.log(refKey, "added")
             }
         });
 
         if(!objIsEmpty(changes)){
             let projectRef = db.collection("projects").doc(props.project?.id);
 
-            return projectRef.update(changes).then(() => {
-                console.log("Document successfully updated!");
-            })
+            return projectRef.update(changes)
+                .then(() => {
+                    console.log("Document successfully updated!");
+                }
+            )
             .catch((error) => {
                 // The document probably doesn't exist.
                 console.error("Error updating document: ", error);
@@ -138,7 +140,8 @@ const FolioDrawer = (props: FolioDrawerProps) => {
     }
     
     const handleDelete = () => {
-        db.collection("projects").doc(props.project?.id).delete().then(() => {
+        db.collection("projects").doc(props.project?.id).delete()
+        .then(() => {
             console.log("Document successfully deleted!");
         }).catch((error) => {
             console.error("Error removing document: ", error);
