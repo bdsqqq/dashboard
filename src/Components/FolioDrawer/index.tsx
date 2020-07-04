@@ -99,6 +99,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
     const [getRef, setRef] = useDynamicRefs();
     const objIsEmpty = useObjIsEmpty();
 
+    const tools = props.project.tools;
 
     const refs = {
         refProjeto : useRef<any>(),
@@ -219,14 +220,14 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                 />
                                 <Label>Tools</Label>
                                 <ToolsWrapper>
-                                {props.project?.tools.map(tool => (
-                                    <React.Fragment key={props.project?.tools.indexOf(tool)}>
-                                        <Label>Tool {props.project?.tools.indexOf(tool) as number + 1}</Label>
+                                {tools.map(tool => (
+                                    <React.Fragment key={tools.indexOf(tool)}>
+                                        <Label>Tool {tools.indexOf(tool) as number + 1}</Label>
                                         <Input 
-                                            id={`inputTool${props.project?.tools.indexOf(tool)}`}
+                                            id={`inputTool${tools.indexOf(tool)}`}
                                             type="text" 
                                             defaultValue={tool} 
-                                            ref={setRef(props.project?.tools.indexOf(tool).toString() as string) as React.RefObject<HTMLInputElement>} 
+                                            ref={setRef(tools.indexOf(tool).toString() as string) as React.RefObject<HTMLInputElement>} 
                                         />
                                     </React.Fragment>
                                 ))}
@@ -237,8 +238,8 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                 <button onClick={handleDelete}>Delete</button>
                                 <button onClick={() => {
                                     console.log(
-                                        props.project?.tools.map(tool => (
-                                            getRef(props.project?.tools.indexOf(tool).toString() as string))
+                                        tools.map(tool => (
+                                            getRef(tools.indexOf(tool).toString() as string))
                                         )
                                     )
                                 }}>I'm scared </button>
@@ -282,10 +283,10 @@ const FolioDrawer = (props: FolioDrawerProps) => {
 
                             <Label>Tools</Label>
                             <ToolsWrapper>
-                                {props.project?.tools.map(tool => (
-                                    <React.Fragment key={props.project?.tools.indexOf(tool)}>
+                                {tools.map(tool => (
+                                    <React.Fragment key={tools.indexOf(tool)}>
                                         <Label>
-                                            Tool {props.project?.tools.indexOf(tool) as number + 1}
+                                            Tool {tools.indexOf(tool) as number + 1}
                                         </Label>
                                         <FakeInput>{tool}</FakeInput>
                                     </React.Fragment>
