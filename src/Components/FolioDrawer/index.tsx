@@ -99,7 +99,6 @@ const FolioDrawer = (props: FolioDrawerProps) => {
     const [getRef, setRef] = useDynamicRefs();
     const objIsEmpty = useObjIsEmpty();
 
-    const [tools, setTools] = useState(props.project.tools);
     console.log("FolioDrawer reRendered")
 
     const refs = {
@@ -111,6 +110,8 @@ const FolioDrawer = (props: FolioDrawerProps) => {
         refOrder : useRef<any>(),
         refRole : useRef<any>(),
     }
+
+    const [tools, setTools] = useState([...props.project.tools]);
 
     const onSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -149,6 +150,10 @@ const FolioDrawer = (props: FolioDrawerProps) => {
         });
     }
 
+    const addTool = () => {
+        setTools([...tools, ""]);
+    }
+
     return (
         <Drawer
             width={640}
@@ -168,6 +173,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                         </Header>
                         <Body>
                             <Form onSubmit={onSubmit}>
+                                <>
                                 <Label>Id</Label>
                                 <FakeInput>{props.project?.id}</FakeInput>
 
@@ -219,26 +225,20 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                     ref={refs.refRole}
                                     id="inputRole" type="text" 
                                 />
+                                </>
                                 <Label>Tools</Label>
                                 <ToolsWrapper>
-                                {tools.map(tool => (
-                                    <React.Fragment key={tools.indexOf(tool)}>
-                                        <Label>Tool {tools.indexOf(tool) as number + 1}</Label>
+                                {tools.map((val, index) => (
+                                    <React.Fragment key={index}>
+                                        <Label>Tool {index as number + 1}</Label>
                                         <Input 
-                                            id={`inputTool${tools.indexOf(tool)}`}
+                                            id={`inputTool-${index}`}
                                             type="text" 
-                                            defaultValue={tool} 
-                                            ref={setRef(tools.indexOf(tool).toString() as string) as React.RefObject<HTMLInputElement>} 
+                                            defaultValue={val} 
+                                            ref={setRef(index.toString() as string) as React.RefObject<HTMLInputElement>} 
                                         />
                                     </React.Fragment>
                                 ))}
-                                    <button onClick={() => {
-                                        console.log(tools, "tools antes do setTools");
-                                        setTools(tools => tools.concat(""));
-                                        console.log(tools, "tools depois do setTools");
-                                    }}>
-                                        Add tool
-                                    </button>
                                 </ToolsWrapper>
 
                                 <button type="submit">Hej Do</button>
@@ -251,6 +251,10 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                         )
                                     )
                                 }}>I'm scared </button>
+                                <input 
+                                    type='button' 
+                                    value="add tool"
+                                    onClick={addTool}/>
                         </Body>
                     </> : <>
                         <Header>
