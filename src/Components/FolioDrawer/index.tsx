@@ -5,6 +5,7 @@ import { Drawer } from 'antd';
 
 import useDynamicRefs from '../../hooks/useDynamicRefs'
 import useObjIsEmpty from '../../hooks/useObjIsEmpty'
+import usePureSplice from '../../hooks/usePureSplice'
 import { db } from '../../firebase'
 
 import 'antd/dist/antd.css';
@@ -149,10 +150,6 @@ const FolioDrawer = (props: FolioDrawerProps) => {
         }).catch((error) => {
             console.error("Error removing document: ", error);
         });
-    }
-
-    const addTool = () => {
-        setTools([...tools, ""]);
     }
 
     return (
