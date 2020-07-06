@@ -53,13 +53,11 @@ const Input = styled.input`
     }
 `
 const Label = styled.label`
-    line-height: 2;
     text-align: left;
     display: block;
-    margin-bottom: 13px;
     margin-top: 20px;
     color: white;
-    font-size: 14px;
+    font-size: 1.8rem;
     font-weight: 200;
 `
 const FakeInput = styled.p`
@@ -74,6 +72,9 @@ const FakeInput = styled.p`
     color: #f3f3f3;
 `
 const ToolsWrapper = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+
     width: 100%;
     padding: 10px -1em;
     margin: -1em auto 0;
