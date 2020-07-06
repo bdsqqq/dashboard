@@ -30,4 +30,8 @@ function pureSplice(array:any[], start = 0, deleteCount = 0, ...items:any) {
     ]
 }
 
-export default pureSplice;
+const usePureSplice = () => {
+    return pureSplice
+}
+
+export default usePureSplice;
