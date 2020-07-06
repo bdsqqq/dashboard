@@ -8,7 +8,7 @@
  * @param {any} items The elements to add to the array, beginning at the start index
  * @returns {Array}
  */
-function pureSplice(array:[], start = 0, deleteCount = 0, ...items:any) {
+function pureSplice(array:any[], start = 0, deleteCount = 0, ...items:any) {
     const arrayLength = array.length
     const _deleteCount = (deleteCount < 0) ? 0 : deleteCount
     let _start
