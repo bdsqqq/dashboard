@@ -294,9 +294,17 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                         </ToolHeader>
                                         <ToolInput 
                                             id={`inputTool-${index}`}
+                                            data-idx={index}
                                             type="text" 
                                             defaultValue={val} 
-                                            ref={setRef(index.toString()) as React.RefObject<HTMLInputElement>} 
+                                            ref={setRef(index.toString()) as React.RefObject<HTMLInputElement>
+                                            }
+                                            onChange={(e:any) => {
+                                                console.log(e)
+                                                const updatedTools = [...tools];
+                                                updatedTools[e.target.dataset.idx] = e.target.value;
+                                                setTools(updatedTools);
+                                            }}
                                         />
                                     </ToolWrapper>
                                 ))}
@@ -318,11 +326,14 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                 <button onClick={handleDelete}>Delete</button>
                                 <button onClick={() => {
                                     console.log(
-                                        tools.map(tool => (
-                                            getRef(tools.indexOf(tool).toString() as string))
+                                        tools.map((val, index) => (
+                                            getRef(index.toString()))
                                         )
                                     )
                                 }}>I'm scared </button>
+                                <button onClick={() => console.log(tools)}>
+                                    Print Tools State
+                                </button>
                         </Body>
                     </> : <>
                         <Header>
