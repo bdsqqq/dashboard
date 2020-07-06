@@ -296,7 +296,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                             id={`inputTool-${index}`}
                                             type="text" 
                                             defaultValue={val} 
-                                            ref={setRef(index.toString() as string) as React.RefObject<HTMLInputElement>} 
+                                            ref={setRef(index.toString()) as React.RefObject<HTMLInputElement>} 
                                         />
                                     </ToolWrapper>
                                 ))}
