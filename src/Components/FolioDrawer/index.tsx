@@ -261,7 +261,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                 <input 
                                     type='button' 
                                     value="add tool"
-                                    onClick={addTool}/>
+                                    onClick={() => setTools([...tools, ""])}/>
                         </Body>
                     </> : <>
                         <Header>
