@@ -231,6 +231,13 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                 {tools.map((val, index) => (
                                     <React.Fragment key={index}>
                                         <Label>Tool {index as number + 1}</Label>
+                                        <input
+                                            type='button'
+                                            onClick={() => {
+                                                setTools(pureSplice(tools, index, 1));
+                                            }}
+                                            value='delete'
+                                        />
                                         <Input 
                                             id={`inputTool-${index}`}
                                             type="text" 
