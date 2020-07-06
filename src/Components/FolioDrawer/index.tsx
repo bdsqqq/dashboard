@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { FiEdit3, FiInfo, FiTrash2, FiPlus } from 'react-icons/fi'
 import { Drawer } from 'antd';
 
-import useDynamicRefs from '../../hooks/useDynamicRefs'
 import useObjIsEmpty from '../../hooks/useObjIsEmpty'
 import usePureSplice from '../../hooks/usePureSplice'
 import { db } from '../../firebase'
@@ -147,7 +146,6 @@ interface FolioDrawerProps {
 }
 
 const FolioDrawer = (props: FolioDrawerProps) => {
-    const [getRef, setRef] = useDynamicRefs();
     const objIsEmpty = useObjIsEmpty();
     const pureSplice = usePureSplice();
 
@@ -297,8 +295,6 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                             data-idx={index}
                                             type="text" 
                                             defaultValue={val} 
-                                            ref={setRef(index.toString()) as React.RefObject<HTMLInputElement>
-                                            }
                                             onChange={(e:any) => {
                                                 console.log(e)
                                                 const updatedTools = [...tools];
@@ -324,13 +320,6 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                 <button type="submit">Hej Do</button>
                             </Form>
                                 <button onClick={handleDelete}>Delete</button>
-                                <button onClick={() => {
-                                    console.log(
-                                        tools.map((val, index) => (
-                                            getRef(index.toString()))
-                                        )
-                                    )
-                                }}>I'm scared </button>
                                 <button onClick={() => console.log(tools)}>
                                     Print Tools State
                                 </button>
