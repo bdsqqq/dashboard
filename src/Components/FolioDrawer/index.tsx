@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-import { FiEdit3, FiInfo } from 'react-icons/fi'
+import { FiEdit3, FiInfo, FiTrash2, FiPlus } from 'react-icons/fi'
 import { Drawer } from 'antd';
 
 import useDynamicRefs from '../../hooks/useDynamicRefs'
