@@ -277,23 +277,40 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                 <Label>Tools</Label>
                                 <ToolsWrapper>
                                 {tools.map((val, index) => (
-                                    <React.Fragment key={index}>
-                                        <Label>Tool {index as number + 1}</Label>
-                                        <input
-                                            type='button'
-                                            onClick={() => {
-                                                setTools(pureSplice(tools, index, 1));
-                                            }}
-                                            value='delete'
-                                        />
-                                        <Input 
+                                    <ToolWrapper key={index}>
+                                        <ToolHeader>
+                                            <ToolLabel>Tool {index as number + 1}</ToolLabel>
+                                            <ToolRemoveButton>
+                                                <FiTrash2
+                                                    style={{ 
+                                                        cursor: "pointer",
+                                                        height: "1em",
+                                                        top: ".125em",
+                                                        position: "relative", 
+                                                    }}
+                                                    onClick={() => {setTools(pureSplice(tools, index, 1))}}
+                                                />
+                                            </ToolRemoveButton>
+                                        </ToolHeader>
+                                        <ToolInput 
                                             id={`inputTool-${index}`}
                                             type="text" 
                                             defaultValue={val} 
                                             ref={setRef(index.toString() as string) as React.RefObject<HTMLInputElement>} 
                                         />
-                                    </React.Fragment>
+                                    </ToolWrapper>
                                 ))}
+                                <ToolAddWrapper>
+                                    <FiPlus
+                                        style={{ 
+                                            cursor: "pointer",
+                                            height: "1em",
+                                            top: ".125em",
+                                            position: "relative", 
+                                        }} 
+                                        onClick={() => setTools([...tools, ""])}
+                                    />
+                                </ToolAddWrapper>
                                 </ToolsWrapper>
 
                                 <button type="submit">Hej Do</button>
@@ -306,10 +323,6 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                         )
                                     )
                                 }}>I'm scared </button>
-                                <input 
-                                    type='button' 
-                                    value="add tool"
-                                    onClick={() => setTools([...tools, ""])}/>
                         </Body>
                     </> : <>
                         <Header>
