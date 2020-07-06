@@ -5,6 +5,7 @@ import { Drawer } from 'antd';
 
 import useDynamicRefs from '../../hooks/useDynamicRefs'
 import useObjIsEmpty from '../../hooks/useObjIsEmpty'
+import usePureSplice from '../../hooks/usePureSplice'
 import { db } from '../../firebase'
 
 import 'antd/dist/antd.css';
@@ -98,6 +99,7 @@ interface FolioDrawerProps {
 const FolioDrawer = (props: FolioDrawerProps) => {
     const [getRef, setRef] = useDynamicRefs();
     const objIsEmpty = useObjIsEmpty();
+    const pureSplice = usePureSplice();
 
     console.log("FolioDrawer reRendered")
 
@@ -148,10 +150,6 @@ const FolioDrawer = (props: FolioDrawerProps) => {
         }).catch((error) => {
             console.error("Error removing document: ", error);
         });
-    }
-
-    const addTool = () => {
-        setTools([...tools, ""]);
     }
 
     return (
@@ -231,6 +229,13 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                 {tools.map((val, index) => (
                                     <React.Fragment key={index}>
                                         <Label>Tool {index as number + 1}</Label>
+                                        <input
+                                            type='button'
+                                            onClick={() => {
+                                                setTools(pureSplice(tools, index, 1));
+                                            }}
+                                            value='delete'
+                                        />
                                         <Input 
                                             id={`inputTool-${index}`}
                                             type="text" 
@@ -254,7 +259,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                 <input 
                                     type='button' 
                                     value="add tool"
-                                    onClick={addTool}/>
+                                    onClick={() => setTools([...tools, ""])}/>
                         </Body>
                     </> : <>
                         <Header>
