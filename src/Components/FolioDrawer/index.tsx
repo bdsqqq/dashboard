@@ -79,6 +79,55 @@ const ToolsWrapper = styled.div`
     padding: 10px -1em;
     margin: -1em auto 0;
 `
+const ToolWrapper = styled.div`
+    display: flex;
+    flex-flow: column nowrap;
+
+    margin: .66rem;
+`
+const ToolHeader = styled.div`
+    flex: 1;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+	margin: 5px;
+`
+const ToolLabel = styled(Label)`
+    font-size: 1rem;
+    margin: 0;
+`
+const ToolRemoveButton = styled.span`
+    font-size: 1.5em;
+    color: #bf1650;
+
+    opacity: 0.5;
+    transition: 200ms ease-in all;
+
+    &:hover{
+        opacity: 1;
+    }
+`
+const ToolInput = styled(Input)`
+`
+const ToolAddWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    
+    margin: .66rem;
+    font-size: 3em;
+    color: #00ad7c;
+
+    > * {
+        opacity: 0.5;
+        transition: 200ms ease-in all;
+
+        &:hover{
+            opacity: 1;
+        }
+    }
+`
 interface FolioDrawerProps {
     visible: boolean;
     onClose: any;
