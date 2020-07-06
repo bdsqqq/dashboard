@@ -286,7 +286,10 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                                         top: ".125em",
                                                         position: "relative", 
                                                     }}
-                                                    onClick={() => {setTools(pureSplice(tools, index, 1))}}
+                                                    onClick={() => {
+                                                        const updatedTools = pureSplice(tools, index, 1);
+                                                        setTools(updatedTools);
+                                                    }}
                                                 />
                                             </ToolRemoveButton>
                                         </ToolHeader>
@@ -294,9 +297,8 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                             id={`inputTool-${index}`}
                                             data-idx={index}
                                             type="text" 
-                                            defaultValue={val} 
+                                            value={val} 
                                             onChange={(e:any) => {
-                                                console.log(e)
                                                 const updatedTools = [...tools];
                                                 updatedTools[e.target.dataset.idx] = e.target.value;
                                                 setTools(updatedTools);
