@@ -98,6 +98,7 @@ interface FolioDrawerProps {
 const FolioDrawer = (props: FolioDrawerProps) => {
     const [getRef, setRef] = useDynamicRefs();
     const objIsEmpty = useObjIsEmpty();
+    const pureSplice = usePureSplice();
 
     console.log("FolioDrawer reRendered")
 
