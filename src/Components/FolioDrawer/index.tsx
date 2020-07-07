@@ -177,6 +177,10 @@ const FolioDrawer = (props: FolioDrawerProps) => {
             }
         });
 
+        if(!arraysAreEqual(tools, props.project.tools)){
+            changes["tools"] = tools;
+        }
+
         if(!objIsEmpty(changes)){
             let projectRef = db.collection("projects").doc(props.project?.id);
 
