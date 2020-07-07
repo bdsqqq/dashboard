@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { FiEdit3, FiInfo, FiTrash2, FiPlus } from 'react-icons/fi'
-import { Drawer } from 'antd';
+import { Drawer, Popconfirm } from 'antd';
 
 import useObjIsEmpty from '../../hooks/useObjIsEmpty'
 import useCompareArrays from '../../hooks/useCompareArrays'
@@ -286,13 +286,20 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                         <ToolHeader>
                                             <ToolLabel>Tool {index as number + 1}</ToolLabel>
                                             <ToolRemoveButton>
-                                                <FiTrash2
-                                                    style={iconStyles as React.CSSProperties}
-                                                    onClick={() => {
+                                                <Popconfirm
+                                                    icon={null}
+                                                    placement="left"
+                                                    title="Deletar essa ferramenta？" 
+                                                    okText="Sim" cancelText="Não"
+                                                    onConfirm={() => {
                                                         const updatedTools = pureSplice(tools, index, 1);
                                                         setTools(updatedTools);
                                                     }}
-                                                />
+                                                >
+                                                    <FiTrash2
+                                                        style={iconStyles as React.CSSProperties}
+                                                    />
+                                                </Popconfirm>
                                             </ToolRemoveButton>
                                         </ToolHeader>
                                         <ToolInput 
@@ -318,7 +325,16 @@ const FolioDrawer = (props: FolioDrawerProps) => {
 
                                 <button type="submit">Hej Do</button>
                             </Form>
-                                <button onClick={handleDelete}>Delete</button>
+                            <Popconfirm
+                                placement="left"
+                                icon={null}
+                                title="Deletar esse projeto?" 
+                                okText="Sim" cancelText="Não"
+                                onConfirm={handleDelete}
+                            >
+                                <button>Delete</button>
+                            </Popconfirm>
+                                
                                 <button onClick={() => console.log(tools)}>
                                     Print Tools State
                                 </button>
