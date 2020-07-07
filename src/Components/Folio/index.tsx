@@ -21,8 +21,20 @@ const FormWrap = styled.div`
     height: 10vh;
 `
 const Form = styled.form`
-    display: flex;
     width: 100%;
+    height: 20vh;
+`
+const FormInfo = styled.label`
+    text-align: left;
+    display: block;
+    font-size: 1.5rem;
+    color: #bf1650;
+    font-weight: 200;
+`
+const InputWrapper = styled.div`
+    display: flex;
+    flex-flow: nowrap;
+    align-items: center;
 `
 const InputNewId = styled.input`
     width: 100%;
@@ -42,11 +54,14 @@ const InputNewId = styled.input`
 const ButtonCreate = styled.button`
     cursor: pointer;
 
-    width: 1.8em;
+    display: flex;
+    flex-flow: nowrap;
+    align-items: center;
+
     height: 1.8em;
     text-align: center;
     color: #00ad7c;
-    font-size: 2em;
+    font-size: 3em;
     border: none;
 
     background-color: #00000000;
@@ -72,7 +87,6 @@ const CardContainer = styled.div`
         }
     }
 `
-
 interface Project{
     id: string;
     ano: string;
