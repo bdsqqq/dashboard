@@ -16,7 +16,7 @@ const mq = breakpoints.map(
 )
 
 const FormWrap = styled.div`
-    width: 30%;
+    max-width: 800px;
     margin: 8rem 8rem 4rem;
     height: 10vh;
 `
@@ -161,15 +161,17 @@ function Folio() {
         <>
             <FormWrap>
                 <Form onSubmit={onSubmit}>
-                    <InputNewId
-                        type="text"
-                        name="newId"
-                        placeholder="Cadastre um Projeto..."
-                        ref={inputRef}
-                    />
+                    <InputWrapper>
+                        <InputNewId
+                            type="text"
+                            name="newId"
+                            placeholder="Adicione um Projeto..."
+                            ref={inputRef}
+                        />
                         <ButtonCreate type="submit">
                             <FiPlus style={iconStyles as React.CSSProperties} />
                         </ButtonCreate>
+                    </InputWrapper>
                     <FormInfo>{formInfo}</FormInfo>
                     <input 
                         type={"button"}
