@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { FiEdit3, FiInfo } from "react-icons/fi";
 
+import iconStyles from '../../IconStyles'
+
 const MetaWrapper = styled.div`
     position: absolute;
     right: -5px;
@@ -83,16 +85,22 @@ function Card(props: FolioCardProps) {
                         {props.project.projeto}
                     </MetaName>
                     <IconContainer>
-                        <FiEdit3 onClick={() => {
-                            props.setCurrentProject(props.project)
-                            props.setVisible(true);
-                            props.setIsEditable(true);
-                        }} />
-                        <FiInfo onClick={() => {
-                            props.setCurrentProject(props.project)
-                            props.setVisible(true);
-                            props.setIsEditable(false);
-                        }} />
+                        <FiEdit3
+                            style={iconStyles as React.CSSProperties}
+                            onClick={() => {
+                                props.setCurrentProject(props.project)
+                                props.setVisible(true);
+                                props.setIsEditable(true);
+                            }} 
+                            />
+                        <FiInfo
+                            style={iconStyles as React.CSSProperties}
+                            onClick={() => {
+                                props.setCurrentProject(props.project)
+                                props.setVisible(true);
+                                props.setIsEditable(false);
+                            }}
+                        />
                     </IconContainer>
                 </Meta>
                 <span>

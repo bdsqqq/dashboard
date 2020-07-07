@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components'
 import { FiHeart } from "react-icons/fi";
 
+import iconStyles from '../../IconStyles'
+
 const Wrapper = styled.div`
     display: flex;
     align-items: center;
@@ -26,7 +28,7 @@ const Link = styled.a`
 const Footer = () =>{
     return(
         <Wrapper>
-            <span>Feito com <FiHeart style={{height:".9em", top: ".125em",position: "relative"}} /> por <Link href={"https://github.com/bdsqqq"} target={"_blank"}>Igor Bedesqui</Link>. atribuições podem ser encontradas no <Link href={"https://github.com/bdsqqq/dashboard"} target={"_blank"}>repositorio</Link>.</span>
+            <span>Feito com <FiHeart style={iconStyles as React.CSSProperties} /> por <Link href={"https://github.com/bdsqqq"} target={"_blank"}>Igor Bedesqui</Link>. atribuições podem ser encontradas no <Link href={"https://github.com/bdsqqq/dashboard"} target={"_blank"}>repositorio</Link>.</span>
         </Wrapper>
     );
 }

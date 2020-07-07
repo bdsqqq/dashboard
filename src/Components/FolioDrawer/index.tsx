@@ -9,6 +9,7 @@ import usePureSplice from '../../hooks/usePureSplice'
 import { db } from '../../firebase'
 
 import 'antd/dist/antd.css';
+import iconStyles from '../../IconStyles'
 
 const Wrapper = styled.div`
     display: flex;
@@ -221,7 +222,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                     ? <>
                         <Header>
                             <span>Edição Habilitada</span>
-                            <FiInfo style={{ cursor: "pointer", height: "1em", top: ".125em", position: "relative", }} onClick={props.flipIsEditable} />
+                            <FiInfo style={iconStyles as React.CSSProperties} onClick={props.flipIsEditable} />
                         </Header>
                         <Body>
                             <Form onSubmit={onSubmit}>
@@ -286,12 +287,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                             <ToolLabel>Tool {index as number + 1}</ToolLabel>
                                             <ToolRemoveButton>
                                                 <FiTrash2
-                                                    style={{ 
-                                                        cursor: "pointer",
-                                                        height: "1em",
-                                                        top: ".125em",
-                                                        position: "relative", 
-                                                    }}
+                                                    style={iconStyles as React.CSSProperties}
                                                     onClick={() => {
                                                         const updatedTools = pureSplice(tools, index, 1);
                                                         setTools(updatedTools);
@@ -314,12 +310,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                                 ))}
                                 <ToolAddWrapper>
                                     <FiPlus
-                                        style={{ 
-                                            cursor: "pointer",
-                                            height: "1em",
-                                            top: ".125em",
-                                            position: "relative", 
-                                        }} 
+                                        style={iconStyles as React.CSSProperties} 
                                         onClick={() => setTools([...tools, ""])}
                                     />
                                 </ToolAddWrapper>
@@ -336,12 +327,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                         <Header>
                             <span>Edição Desabilitada</span>
                             <FiEdit3 
-                                style={{ 
-                                    cursor: "pointer",
-                                    height: "1em",
-                                    top: ".125em",
-                                    position: "relative", 
-                                }} 
+                                style={iconStyles as React.CSSProperties} 
                                 onClick={props.flipIsEditable} />
                         </Header>
                         <Body>

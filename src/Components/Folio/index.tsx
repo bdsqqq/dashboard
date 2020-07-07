@@ -8,6 +8,7 @@ import Card from '../FolioCard';
 import Loader from '../LoaderFolioCard';
 import FolioDrawer from '../FolioDrawer';
 
+import iconStyles from '../../IconStyles'
 
 const breakpoints = [48, 64]
 
@@ -145,7 +146,7 @@ function Folio() {
                         placeholder="Cadastre um Projeto..."
                         ref={inputRef}
                     />
-                    <ButtonCreate type="submit"><FiArrowRight style={{height:"1em", top: ".125em",position: "relative"}} /></ButtonCreate>
+                    <ButtonCreate type="submit"><FiArrowRight style={iconStyles as React.CSSProperties} /></ButtonCreate>
                 </Form>
             </FormWrap>
             

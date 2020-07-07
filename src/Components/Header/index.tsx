@@ -5,6 +5,8 @@ import { FiLogOut } from "react-icons/fi";
 import { app } from '../../firebase'
 import LogoIcon from '../../assets/logo.svg'
 
+import iconStyles from '../../IconStyles'
+
 const Wrapper = Styled.div`
     display: flex;
     align-items: center;
@@ -47,7 +49,7 @@ const Header = () =>{
     return(
         <Wrapper>
             <Logo><LogoImg src={LogoIcon} alt="Logotipo"/></Logo>
-            <SignOut onClick={() => app.auth().signOut()}> <SignOutText>SignOut</SignOutText> <FiLogOut style={{height:"1em", top: ".125em",position: "relative"}} /></SignOut>
+            <SignOut onClick={() => app.auth().signOut()}> <SignOutText>SignOut</SignOutText> <FiLogOut style={iconStyles as React.CSSProperties} /></SignOut>
         </Wrapper>
     );
 }
