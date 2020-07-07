@@ -149,7 +149,9 @@ function Folio() {
                         placeholder="Cadastre um Projeto..."
                         ref={inputRef}
                     />
-                    <ButtonCreate type="submit"><FiArrowRight style={iconStyles as React.CSSProperties} /></ButtonCreate>
+                        <ButtonCreate type="submit">
+                            <FiPlus style={iconStyles as React.CSSProperties} />
+                        </ButtonCreate>
                 </Form>
             </FormWrap>
             
