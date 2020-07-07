@@ -104,6 +104,7 @@ function Folio() {
     const [isEditable, setIsEditable] = useState<boolean | undefined>()
     const [currentProject, setCurrentProject] = useState<Project>();
     const [isLoaded, setIsloaded] = useState(false);
+    const [formInfo, setFormInfo] = useState("")
 
     const inputRef:React.MutableRefObject<any | undefined> = useRef();//type is any beacuse i'm using StyledComponents and HTMLInputElement doesn't work. <StyledComponent<Input, any, {}, never> doesn't work either
 
@@ -145,8 +146,11 @@ function Folio() {
             setCurrentProject(newProject)
             setVisible(true);
             setIsEditable(true);
+            setFormInfo("");
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+            setFormInfo("Houve um erro inesperado, tente novamente")
+        });
     }
 
     const onClose = () =>{
@@ -166,6 +170,13 @@ function Folio() {
                         <ButtonCreate type="submit">
                             <FiPlus style={iconStyles as React.CSSProperties} />
                         </ButtonCreate>
+                    <FormInfo>{formInfo}</FormInfo>
+                    <input 
+                        type={"button"}
+                        onClick={() => {setFormInfo("Houve um erro inesperado, tente novamente")
+                    }}
+                        value={"Test feature"}
+                    />
                 </Form>
             </FormWrap>
             
