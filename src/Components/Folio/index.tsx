@@ -112,7 +112,7 @@ function Folio() {
     const onSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if(inputRef.current.value === '') return;
-        
+
         db.collection('projects').doc(inputRef.current.value).set({
             id: inputRef.current.value,
             ano: "",
@@ -125,7 +125,9 @@ function Folio() {
                 "",
             ],
             order: "0",
-        })
+        };
+        
+        db.collection('projects').doc(inputRef.current.value).set(newProject)
         .then(res => {
             console.log(res)
         })
