@@ -129,7 +129,9 @@ function Folio() {
         
         db.collection('projects').doc(inputRef.current.value).set(newProject)
         .then(res => {
-            console.log(res)
+            setCurrentProject(newProject)
+            setVisible(true);
+            setIsEditable(true);
         })
         .catch(err => console.log(err));
     }
