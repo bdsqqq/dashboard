@@ -94,8 +94,8 @@ function Folio() {
 
     const inputRef:React.MutableRefObject<any | undefined> = useRef();//type is any beacuse i'm using StyledComponents and HTMLInputElement doesn't work. <StyledComponent<Input, any, {}, never> doesn't work either
 
-    const [projects, setProjects] = useState<Project[]>([]) //creates a state variable called projects and a method to update it
-
+    const [projects, setProjects] = useState<Project[]>([]);
+    
     useEffect(() => {
         db.collection("projects")
         .orderBy("order", "asc")
