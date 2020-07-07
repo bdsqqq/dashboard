@@ -4,6 +4,7 @@ import { FiEdit3, FiInfo, FiTrash2, FiPlus } from 'react-icons/fi'
 import { Drawer } from 'antd';
 
 import useObjIsEmpty from '../../hooks/useObjIsEmpty'
+import useCompareArrays from '../../hooks/useCompareArrays'
 import usePureSplice from '../../hooks/usePureSplice'
 import { db } from '../../firebase'
 
@@ -148,6 +149,7 @@ interface FolioDrawerProps {
 const FolioDrawer = (props: FolioDrawerProps) => {
     const objIsEmpty = useObjIsEmpty();
     const pureSplice = usePureSplice();
+    const arraysAreEqual = useCompareArrays();
 
     console.log("FolioDrawer reRendered")
 
