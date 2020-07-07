@@ -113,7 +113,7 @@ function Folio() {
         event.preventDefault();
         if(inputRef.current.value === '') return;
 
-        db.collection('projects').doc(inputRef.current.value).set({
+        let newProject = {
             id: inputRef.current.value,
             ano: "",
             demo: "",
