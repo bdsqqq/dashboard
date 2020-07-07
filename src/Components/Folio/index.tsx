@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
-import { FiArrowRight } from 'react-icons/fi'
-
+import { FiPlus } from 'react-icons/fi'
 import { db } from '../../firebase';
 
 import Card from '../FolioCard';
