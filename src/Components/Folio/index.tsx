@@ -131,7 +131,7 @@ function Folio() {
             id: inputRef.current.value,
             ano: "",
             demo: "",
-            img: "",
+            img: "https://images.unsplash.com/photo-1508182314998-3bd49473002f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=60",
             projeto: "",
             role: "",
             source: "",
