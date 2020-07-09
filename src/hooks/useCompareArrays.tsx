@@ -9,7 +9,7 @@
  * @param {Array2} array The seccond array to be compared
  * @returns {Boolean}
  */
-function arraysAreEqual(array1:any[], array2:any[]){
+const arraysAreEqual = (array1:any[], array2:any[]) => {
     if(array1.length === array2.length && array1.every((value, index) => value === array2[index])){
         return true;
     } else {
