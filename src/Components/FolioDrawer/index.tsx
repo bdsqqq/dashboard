@@ -14,15 +14,13 @@ import iconStyles from '../../IconStyles'
 import Wrapper from '../FolioDrawerWrapper';
 
 import Header from '../FolioDrawerHeader'
+import Body from '../FolioDrawerBody'
 
 import ToolAddWrapper from '../FolioDrawerToolAddWrapper' 
 
 
 
-const Body = styled.div`
-    margin: 1em;
-    padding: 2em;
-`
+
 const Form = styled.form`
     max-width: 700px;
     margin: 0 auto;
