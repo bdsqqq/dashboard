@@ -22,15 +22,11 @@ import Input from "../FolioDrawerInput";
 import FakeInput from "../FolioDrawerFakeInput";
 import ToolsWrapper from "../FolioDrawerToolsWrapper";
 
+import Tool from "../FolioDrawerTool";
+
 import ToolRemoveButton from "../FolioDrawerToolRemoveButton";
 import ToolAddWrapper from "../FolioDrawerToolAddWrapper";
 
-const ToolWrapper = styled.div`
-  display: flex;
-  flex-flow: column nowrap;
-
-  margin: 0.66rem;
-`; //Renomear ToolWrapper as Tool
 const ToolHeader = styled.div`
   flex: 1;
 
@@ -204,7 +200,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
             <Label>Tools</Label>
             <ToolsWrapper>
               {tools.map((val, index) => (
-                <ToolWrapper key={index}>
+                <Tool key={index}>
                   <ToolHeader>
                     <ToolLabel>Tool {(index as number) + 1}</ToolLabel>
                     <ToolRemoveButton>
@@ -234,7 +230,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
                       setTools(updatedTools);
                     }}
                   />
-                </ToolWrapper>
+                </Tool>
               ))}
               <ToolAddWrapper>
                 <FiPlus
