@@ -25,14 +25,9 @@ import ToolsWrapper from "../FolioDrawerToolsWrapper";
 import Tool from "../FolioDrawerTool";
 
 import ToolHeader from "../FolioDrawerToolHeader";
-
+import ToolLabel from "../FolioDrawerToolLabel";
 import ToolRemoveButton from "../FolioDrawerToolRemoveButton";
 import ToolAddWrapper from "../FolioDrawerToolAddWrapper";
-
-const ToolLabel = styled(Label)`
-  font-size: 1rem;
-  margin: 0;
-`;
 
 const ToolInput = styled(Input)``;
 
