@@ -24,18 +24,11 @@ import ToolsWrapper from "../FolioDrawerToolsWrapper";
 
 import Tool from "../FolioDrawerTool";
 
+import ToolHeader from "../FolioDrawerToolHeader";
+
 import ToolRemoveButton from "../FolioDrawerToolRemoveButton";
 import ToolAddWrapper from "../FolioDrawerToolAddWrapper";
 
-const ToolHeader = styled.div`
-  flex: 1;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  margin: 5px;
-`;
 const ToolLabel = styled(Label)`
   font-size: 1rem;
   margin: 0;
