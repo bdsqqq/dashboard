@@ -15,6 +15,9 @@ import Wrapper from '../FolioDrawerWrapper';
 
 import Header from '../FolioDrawerHeader'
 
+import ToolAddWrapper from '../FolioDrawerToolAddWrapper' 
+
+
 
 const Body = styled.div`
     margin: 1em;
@@ -101,23 +104,7 @@ const ToolRemoveButton = styled.span`
 `
 const ToolInput = styled(Input)`
 `
-const ToolAddWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    
-    margin: .66rem;
-    font-size: 3em;
-    color: #00ad7c;
 
-    > * {
-        opacity: 0.5;
-        transition: 200ms ease-in all;
-
-        &:hover{
-            opacity: 1;
-        }
-    }
-`
 interface FolioDrawerProps {
     visible: boolean;
     onClose: any;
