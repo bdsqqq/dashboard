@@ -66,8 +66,6 @@ const ToolInput = styled(Input)``;
 interface FolioDrawerProps {
   visible: boolean;
   onClose: any;
-  flipIsEditable: any;
-  isEditable: boolean | undefined;
   project: {
     id: string;
     ano: string;
