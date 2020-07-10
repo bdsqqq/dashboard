@@ -16,15 +16,11 @@ import Wrapper from '../FolioDrawerWrapper';
 import Header from '../FolioDrawerHeader'
 import Body from '../FolioDrawerBody'
 
+import Form from '../FolioDrawerForm';
+
 import ToolAddWrapper from '../FolioDrawerToolAddWrapper' 
 
 
-
-
-const Form = styled.form`
-    max-width: 700px;
-    margin: 0 auto;
-`
 const Input = styled.input`
     width: 100%;
     padding: 10px;
