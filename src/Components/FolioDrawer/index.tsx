@@ -11,13 +11,8 @@ import { db } from '../../firebase'
 import 'antd/dist/antd.css';
 import iconStyles from '../../IconStyles'
 
-const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
+import Wrapper from '../FolioDrawerWrapper'
 
-    height: 100%;
-    width: 100%;
-`
 const Header = styled.div`
     display: flex;
     justify-content: space-between;;
