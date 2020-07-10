@@ -20,24 +20,17 @@ import Form from "../FolioDrawerForm";
 import Label from "../FolioDrawerLabel";
 import Input from "../FolioDrawerInput";
 import FakeInput from "../FolioDrawerFakeInput";
+import ToolsWrapper from "../FolioDrawerToolsWrapper";
 
 import ToolRemoveButton from "../FolioDrawerToolRemoveButton";
 import ToolAddWrapper from "../FolioDrawerToolAddWrapper";
 
-const ToolsWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-
-  width: 100%;
-  padding: 10px -1em;
-  margin: -1em auto 0;
-`;
 const ToolWrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;
 
   margin: 0.66rem;
-`;
+`; //Renomear ToolWrapper as Tool
 const ToolHeader = styled.div`
   flex: 1;
 
