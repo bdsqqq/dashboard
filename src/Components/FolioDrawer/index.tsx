@@ -18,20 +18,12 @@ import Body from '../FolioDrawerBody'
 
 import Form from '../FolioDrawerForm';
 
+import Label from '../FolioDrawerLabel'
 import Input from '../FolioDrawerInput'
 
 import ToolAddWrapper from '../FolioDrawerToolAddWrapper' 
 
 
-
-const Label = styled.label`
-    text-align: left;
-    display: block;
-    margin-top: 20px;
-    color: white;
-    font-size: 1.8rem;
-    font-weight: 200;
-`
 const FakeInput = styled.p`
     width: 100%;
     padding: 10px;
