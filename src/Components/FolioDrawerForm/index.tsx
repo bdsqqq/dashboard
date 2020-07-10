@@ -8,7 +8,7 @@ const Form = styled.form`
 
 const FolioDrawerForm = (props:any) => {
     return (
-        <Form>
+        <Form onSubmit={props.onSubmit}>
             {props.children}
         </Form>
     );
