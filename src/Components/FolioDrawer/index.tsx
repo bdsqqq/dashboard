@@ -19,20 +19,11 @@ import Form from "../FolioDrawerForm";
 
 import Label from "../FolioDrawerLabel";
 import Input from "../FolioDrawerInput";
+import FakeInput from "../FolioDrawerFakeInput";
 
 import ToolRemoveButton from "../FolioDrawerToolRemoveButton";
 import ToolAddWrapper from "../FolioDrawerToolAddWrapper";
 
-const FakeInput = styled.p`
-  width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-  background: none;
-  border: 0;
-  font-family: "Montserrat", sans-serif;
-  border-bottom: 2px solid #bebed2;
-  color: #f3f3f3;
-`;
 const ToolsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
