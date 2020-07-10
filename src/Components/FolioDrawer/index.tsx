@@ -20,6 +20,7 @@ import Form from "../FolioDrawerForm";
 import Label from "../FolioDrawerLabel";
 import Input from "../FolioDrawerInput";
 
+import ToolRemoveButton from "../FolioDrawerToolRemoveButton";
 import ToolAddWrapper from "../FolioDrawerToolAddWrapper";
 
 const FakeInput = styled.p`
@@ -59,17 +60,7 @@ const ToolLabel = styled(Label)`
   font-size: 1rem;
   margin: 0;
 `;
-const ToolRemoveButton = styled.span`
-  font-size: 1.5em;
-  color: #bf1650;
 
-  opacity: 0.5;
-  transition: 200ms ease-in all;
-
-  &:hover {
-    opacity: 1;
-  }
-`;
 const ToolInput = styled(Input)``;
 
 interface FolioDrawerProps {
