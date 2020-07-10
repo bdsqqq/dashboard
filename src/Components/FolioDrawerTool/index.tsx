@@ -9,7 +9,7 @@ const Tool = styled.div`
 `;
 
 const FolioDrawerTool = (props: any) => {
-  return <Tool key={props.key}>{props.children}</Tool>;
+  return <Tool>{props.children}</Tool>;
 };
 
 export default FolioDrawerTool;
