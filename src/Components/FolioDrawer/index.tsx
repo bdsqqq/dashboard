@@ -11,8 +11,6 @@ import { db } from "../../firebase";
 import "antd/dist/antd.css";
 import iconStyles from "../../IconStyles";
 
-import Wrapper from "../FolioDrawerWrapper";
-
 import Form from "../FolioDrawerForm";
 
 import Label from "../FolioDrawerLabel";
@@ -119,127 +117,125 @@ const FolioDrawer = (props: FolioDrawerProps) => {
       style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}
       drawerStyle={{ backgroundColor: "#222" }}
     >
-      <Wrapper>
-        <Form onSubmit={onSubmit}>
-          <>
-            <Label>Id</Label>
-            <FakeInput>{props.project?.id}</FakeInput>
+      <Form onSubmit={onSubmit}>
+        <>
+          <Label>Id</Label>
+          <FakeInput>{props.project?.id}</FakeInput>
 
-            <Label>Projeto</Label>
-            <Input
-              name="projeto"
-              defaultValue={props.project?.projeto}
-              ref={refs.refProjeto}
-              id="inputProjeto"
-              type="text"
-            />
-            <Label>Demo link</Label>
-            <Input
-              name="demo"
-              defaultValue={props.project?.demo}
-              ref={refs.refDemo}
-              id="inputDemo"
-              type="text"
-            />
-            <Label>Source Link (vazio se privado)</Label>
-            <Input
-              name="source"
-              defaultValue={props.project?.source}
-              ref={refs.refSource}
-              id="inputSource"
-              type="text"
-            />
-            <Label>Img Link</Label>
-            <Input
-              name="img"
-              defaultValue={props.project?.img}
-              ref={refs.refImg}
-              id="inputLink"
-              type="text"
-            />
-            <Label>Ano</Label>
-            <Input
-              name="ano"
-              defaultValue={props.project?.ano}
-              ref={refs.refAno}
-              id="inputAno"
-              type="text"
-            />
-            <Label>Order</Label>
-            <Input
-              name="order"
-              defaultValue={props.project?.order}
-              ref={refs.refOrder}
-              id="inputOrder"
-              type="text"
-            />
-            <Label>Role</Label>
-            <Input
-              name="role"
-              defaultValue={props.project?.role}
-              ref={refs.refRole}
-              id="inputRole"
-              type="text"
-            />
-          </>
-          <Label>Tools</Label>
-          <ToolsWrapper>
-            {tools.map((val, index) => (
-              <Tool key={index}>
-                <ToolHeader>
-                  <ToolLabel>Tool {(index as number) + 1}</ToolLabel>
-                  <ToolRemoveButton>
-                    <Popconfirm
-                      icon={null}
-                      placement="left"
-                      title="Deletar essa ferramenta？"
-                      okText="Sim"
-                      cancelText="Não"
-                      onConfirm={() => {
-                        const updatedTools = pureSplice(tools, index, 1);
-                        setTools(updatedTools);
-                      }}
-                    >
-                      <FiTrash2 style={iconStyles as React.CSSProperties} />
-                    </Popconfirm>
-                  </ToolRemoveButton>
-                </ToolHeader>
-                <ToolInput
-                  id={`inputTool-${index}`}
-                  data-idx={index}
-                  type="text"
-                  value={val}
-                  onChange={(e: any) => {
-                    const updatedTools = [...tools];
-                    updatedTools[e.target.dataset.idx] = e.target.value;
-                    setTools(updatedTools);
-                  }}
-                />
-              </Tool>
-            ))}
-            <ToolAddWrapper>
-              <FiPlus
-                style={iconStyles as React.CSSProperties}
-                onClick={() => setTools([...tools, ""])}
+          <Label>Projeto</Label>
+          <Input
+            name="projeto"
+            defaultValue={props.project?.projeto}
+            ref={refs.refProjeto}
+            id="inputProjeto"
+            type="text"
+          />
+          <Label>Demo link</Label>
+          <Input
+            name="demo"
+            defaultValue={props.project?.demo}
+            ref={refs.refDemo}
+            id="inputDemo"
+            type="text"
+          />
+          <Label>Source Link (vazio se privado)</Label>
+          <Input
+            name="source"
+            defaultValue={props.project?.source}
+            ref={refs.refSource}
+            id="inputSource"
+            type="text"
+          />
+          <Label>Img Link</Label>
+          <Input
+            name="img"
+            defaultValue={props.project?.img}
+            ref={refs.refImg}
+            id="inputLink"
+            type="text"
+          />
+          <Label>Ano</Label>
+          <Input
+            name="ano"
+            defaultValue={props.project?.ano}
+            ref={refs.refAno}
+            id="inputAno"
+            type="text"
+          />
+          <Label>Order</Label>
+          <Input
+            name="order"
+            defaultValue={props.project?.order}
+            ref={refs.refOrder}
+            id="inputOrder"
+            type="text"
+          />
+          <Label>Role</Label>
+          <Input
+            name="role"
+            defaultValue={props.project?.role}
+            ref={refs.refRole}
+            id="inputRole"
+            type="text"
+          />
+        </>
+        <Label>Tools</Label>
+        <ToolsWrapper>
+          {tools.map((val, index) => (
+            <Tool key={index}>
+              <ToolHeader>
+                <ToolLabel>Tool {(index as number) + 1}</ToolLabel>
+                <ToolRemoveButton>
+                  <Popconfirm
+                    icon={null}
+                    placement="left"
+                    title="Deletar essa ferramenta？"
+                    okText="Sim"
+                    cancelText="Não"
+                    onConfirm={() => {
+                      const updatedTools = pureSplice(tools, index, 1);
+                      setTools(updatedTools);
+                    }}
+                  >
+                    <FiTrash2 style={iconStyles as React.CSSProperties} />
+                  </Popconfirm>
+                </ToolRemoveButton>
+              </ToolHeader>
+              <ToolInput
+                id={`inputTool-${index}`}
+                data-idx={index}
+                type="text"
+                value={val}
+                onChange={(e: any) => {
+                  const updatedTools = [...tools];
+                  updatedTools[e.target.dataset.idx] = e.target.value;
+                  setTools(updatedTools);
+                }}
               />
-            </ToolAddWrapper>
-          </ToolsWrapper>
+            </Tool>
+          ))}
+          <ToolAddWrapper>
+            <FiPlus
+              style={iconStyles as React.CSSProperties}
+              onClick={() => setTools([...tools, ""])}
+            />
+          </ToolAddWrapper>
+        </ToolsWrapper>
 
-          <button type="submit">Hej Do</button>
-        </Form>
-        <Popconfirm
-          placement="left"
-          icon={null}
-          title="Deletar esse projeto?"
-          okText="Sim"
-          cancelText="Não"
-          onConfirm={handleDelete}
-        >
-          <button>Delete</button>
-        </Popconfirm>
+        <button type="submit">Hej Do</button>
+      </Form>
+      <Popconfirm
+        placement="left"
+        icon={null}
+        title="Deletar esse projeto?"
+        okText="Sim"
+        cancelText="Não"
+        onConfirm={handleDelete}
+      >
+        <button>Delete</button>
+      </Popconfirm>
 
-        <button onClick={() => console.log(tools)}>Print Tools State</button>
-      </Wrapper>
+      <button onClick={() => console.log(tools)}>Print Tools State</button>
     </Drawer>
   );
 };
