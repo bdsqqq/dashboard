@@ -4,6 +4,7 @@ import { FiPlus } from "react-icons/fi";
 import { db } from "../../firebase";
 
 import CardContainer from "../FolioCardContainer";
+import Form from "../Form";
 
 import Card from "../FolioCard";
 import Loader from "../LoaderFolioCard";
@@ -14,10 +15,6 @@ import iconStyles from "../../IconStyles";
 const FormWrap = styled.div`
   max-width: 800px;
   margin: 8rem 8rem 4rem;
-  height: 10vh;
-`;
-const Form = styled.form`
-  width: 100%;
   height: 20vh;
 `;
 const FormInfo = styled.label`
