@@ -17,28 +17,32 @@ const FormWrap = styled.div`
   height: 20vh;
 `;
 
+const createNewProject = (id: string) => {
+  return {
+    id: id,
+    ano: "",
+    demo: "",
+    img:
+      "https://images.unsplash.com/photo-1508182314998-3bd49473002f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=60",
+    projeto: "",
+    role: "",
+    source: "",
+    tools: [""],
+    order: "0",
+  };
+};
+
 const FolioFormWrap = (props: any) => {
   const { setCurrentProject, setVisible } = props;
   const [formInfo, setFormInfo] = useState("");
 
   const inputRef: React.MutableRefObject<any | undefined> = useRef(); //type is any beacuse i'm using StyledComponents and HTMLInputElement doesn't work. <StyledComponent<Input, any, {}, never> doesn't work either
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const createProjectOnDb = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (inputRef.current.value === "") return;
 
-    let newProject = {
-      id: inputRef.current.value,
-      ano: "",
-      demo: "",
-      img:
-        "https://images.unsplash.com/photo-1508182314998-3bd49473002f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=60",
-      projeto: "",
-      role: "",
-      source: "",
-      tools: [""],
-      order: "0",
-    };
+    let newProject = createNewProject(inputRef.current.value);
 
     db.collection("projects")
       .doc(inputRef.current.value)
@@ -55,7 +59,7 @@ const FolioFormWrap = (props: any) => {
 
   return (
     <FormWrap>
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={createProjectOnDb}>
         <InputWrapper>
           <Input
             type="text"
