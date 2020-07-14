@@ -8,6 +8,7 @@ import iconStyles from "../../IconStyles";
 import Form from "../Form";
 import FormInfo from "../FolioFormInfo";
 import ButtonCreate from "../FolioFormButtonCreate";
+import Input from "../FolioFormInput";
 
 const FormWrap = styled.div`
   max-width: 800px;
@@ -18,20 +19,6 @@ const InputWrapper = styled.div`
   display: flex;
   flex-flow: nowrap;
   align-items: center;
-`;
-const InputNewId = styled.input`
-  width: 100%;
-  border: none;
-  border-bottom: 2px solid #bebed2;
-  padding: 5px;
-  height: 1.8em;
-  outline: none;
-  font-size: 2em;
-  transition: 200ms ease-in all;
-
-  &:focus {
-    border-bottom: 2px solid #78788c;
-  }
 `;
 
 const FolioFormWrap = (props: any) => {
@@ -74,7 +61,7 @@ const FolioFormWrap = (props: any) => {
     <FormWrap>
       <Form onSubmit={onSubmit}>
         <InputWrapper>
-          <InputNewId
+          <Input
             type="text"
             name="newId"
             placeholder="Adicione um Projeto..."
