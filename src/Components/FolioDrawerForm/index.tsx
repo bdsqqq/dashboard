@@ -13,6 +13,20 @@ import Input from "../FolioDrawerInput";
 import FakeInput from "../FolioDrawerFakeInput";
 import Tools from "../FolioDrawerFormTools";
 
+const postChangesToDataBase = (changes: object, projectId: string) => {
+  let projectRef = db.collection("projects").doc(projectId);
+
+  return projectRef
+    .update(changes)
+    .then(() => {
+      console.log("Document successfully updated!");
+    })
+    .catch((error) => {
+      // The document probably doesn't exist.
+      console.error("Error updating document: ", error);
+    });
+};
+
 const FolioDrawerForm = (props: any) => {
   const { tools, setTools } = props;
 
@@ -29,41 +43,39 @@ const FolioDrawerForm = (props: any) => {
     refRole: useRef<any>(),
   };
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    let changes: any = {};
-
-    Object.entries(refs).map(([refKey, refValue]: any) => {
+  const returnChangesOnProject = (
+    refs: any,
+    currentTools: string[],
+    defaultTools: string[]
+  ) => {
+    let tempChanges: any = {};
+    Object.entries(refs).forEach(([refKey, refValue]: any) => {
       if (refValue.current.value !== refValue.current.defaultValue) {
-        changes[refValue.current.name] = refValue.current.value;
+        tempChanges[refValue.current.name] = refValue.current.value;
         console.log(refKey, "added");
       }
     });
-
-    if (!arraysAreEqual(tools, props.project.tools)) {
-      changes["tools"] = tools;
+    if (!arraysAreEqual(currentTools, defaultTools)) {
+      tempChanges["tools"] = defaultTools;
     }
+    return tempChanges;
+  };
+
+  const postChangesToDb = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    let changes: any = {};
+    changes = returnChangesOnProject(refs, tools, props.project.tools);
 
     if (!objIsEmpty(changes)) {
-      let projectRef = db.collection("projects").doc(props.project?.id);
-
-      return projectRef
-        .update(changes)
-        .then(() => {
-          console.log("Document successfully updated!");
-        })
-        .catch((error) => {
-          // The document probably doesn't exist.
-          console.error("Error updating document: ", error);
-        });
+      postChangesToDataBase(changes, props.project?.id);
     } else {
       console.log("não houve mudança");
     }
   };
 
   return (
-    <Form onSubmit={onSubmit}>
+    <Form onSubmit={postChangesToDb}>
       <Label>Id</Label>
       <FakeInput>{props.project?.id}</FakeInput>
 
