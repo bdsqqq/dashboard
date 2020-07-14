@@ -6,19 +6,12 @@ import { db } from "../../firebase";
 import iconStyles from "../../IconStyles";
 
 import Form from "../Form";
+import FormInfo from "../FolioFormInfo";
 
 const FormWrap = styled.div`
   max-width: 800px;
   margin: 8rem 8rem 4rem;
   height: 20vh;
-`;
-
-const FormInfo = styled.label`
-  text-align: left;
-  display: block;
-  font-size: 1.5rem;
-  color: #bf1650;
-  font-weight: 200;
 `;
 const InputWrapper = styled.div`
   display: flex;
