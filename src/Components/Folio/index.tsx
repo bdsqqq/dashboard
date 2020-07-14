@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 import { db } from "../../firebase";
 
 import CardContainer from "../FolioCardContainer";
