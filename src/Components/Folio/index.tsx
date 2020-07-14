@@ -3,15 +3,13 @@ import styled from "styled-components";
 import { FiPlus } from "react-icons/fi";
 import { db } from "../../firebase";
 
+import CardContainer from "../FolioCardContainer";
+
 import Card from "../FolioCard";
 import Loader from "../LoaderFolioCard";
 import FolioDrawer from "../FolioDrawer";
 
 import iconStyles from "../../IconStyles";
-
-const breakpoints = [48, 64];
-
-const mq = breakpoints.map((bp) => `@media (min-width: ${bp}em)`);
 
 const FormWrap = styled.div`
   max-width: 800px;
@@ -62,27 +60,6 @@ const ButtonCreate = styled.button`
   border: none;
 
   background-color: #00000000;
-`;
-const CardContainer = styled.div`
-  width: 100%;
-  min-height: 24rem;
-  height: auto;
-  margin: 0 auto;
-  padding: 0 8em;
-
-  display: flex;
-  flex-wrap: wrap;
-
-  grid-template-columns: repeat(auto-fit, minmax(8rem, 24rem));
-
-  @supports (display: grid) {
-    display: grid;
-    grid-gap: 2rem;
-
-    ${mq[0]} {
-      grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
-    }
-  }
 `;
 interface Project {
   id: string;
