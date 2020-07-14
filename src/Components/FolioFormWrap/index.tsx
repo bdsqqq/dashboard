@@ -6,6 +6,7 @@ import { db } from "../../firebase";
 import iconStyles from "../../IconStyles";
 
 import Form from "../Form";
+import InputWrapper from "../FolioFormInputWrapper";
 import FormInfo from "../FolioFormInfo";
 import ButtonCreate from "../FolioFormButtonCreate";
 import Input from "../FolioFormInput";
@@ -14,11 +15,6 @@ const FormWrap = styled.div`
   max-width: 800px;
   margin: 8rem 8rem 4rem;
   height: 20vh;
-`;
-const InputWrapper = styled.div`
-  display: flex;
-  flex-flow: nowrap;
-  align-items: center;
 `;
 
 const FolioFormWrap = (props: any) => {
