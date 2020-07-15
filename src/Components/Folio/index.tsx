@@ -25,6 +25,7 @@ function Folio() {
   const [visible, setVisible] = useState<boolean>(false);
   const [currentProject, setCurrentProject] = useState<Project>();
   const [isLoaded, setIsloaded] = useState(false);
+  const [updateProjects, setUpdateProjects] = useState(0);
 
   const [projects, setProjects] = useState<Project[]>([]);
 
@@ -41,7 +42,7 @@ function Folio() {
         setIsloaded(true);
         console.log(projects, "fetched projects");
       });
-  }, []); //dep is an empty array so this effect will be called only once
+  }, [updateProjects]);
 
   const onClose = () => {
     setVisible(false);
