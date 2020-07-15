@@ -1,22 +1,22 @@
-import React, { useContext } from 'react';
-import { Route, Redirect } from 'react-router-dom'
-import { AuthContext } from '../../Auth'
+import React, { useContext } from "react";
+import { Route, Redirect } from "react-router-dom";
+import { AuthContext } from "../../Auth";
 
-const PrivateRoute = ({ component: RouteComponent, ...rest }:any) => {
-    const currentUser:firebase.User | null = useContext(AuthContext);
+const PrivateRoute = ({ component: RouteComponent, ...rest }: any) => {
+  const currentUser: firebase.User | null = useContext(AuthContext);
 
-    return(
-        <Route
-            {...rest}
-            render={routeProps => {
-                if(currentUser) {
-                    return <RouteComponent {...routeProps} />
-                } else {
-                    return <Redirect to={"/"} />
-                }
-            }}
-        />
-    );
+  return (
+    <Route
+      {...rest}
+      render={(routeProps) => {
+        if (currentUser) {
+          return <RouteComponent {...routeProps} />;
+        } else {
+          return <Redirect to={"/"} />;
+        }
+      }}
+    />
+  );
 };
 
-export default PrivateRoute
+export default PrivateRoute;
