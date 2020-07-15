@@ -59,7 +59,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
       />
 
       <Popconfirm
-        placement="left"
+        placement="top"
         icon={null}
         title="Deletar esse projeto?"
         okText="Sim"
