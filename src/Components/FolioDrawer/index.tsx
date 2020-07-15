@@ -34,6 +34,8 @@ const FolioDrawer = (props: FolioDrawerProps) => {
       .doc(props.project?.id)
       .delete()
       .then(() => {
+        props.onClose();
+        props.reFetch();
         console.log("Document successfully deleted!");
       })
       .catch((error) => {
