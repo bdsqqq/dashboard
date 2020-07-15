@@ -69,6 +69,7 @@ const FolioDrawerForm = (props: any) => {
 
     if (!objIsEmpty(changes)) {
       postChangesToDataBase(changes, props.project?.id);
+      props.reFetch();
     } else {
       console.log("não houve mudança");
     }
