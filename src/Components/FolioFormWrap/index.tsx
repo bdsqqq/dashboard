@@ -48,6 +48,7 @@ const FolioFormWrap = (props: any) => {
       .doc(inputRef.current.value)
       .set(newProject)
       .then((res) => {
+        props.reFetch();
         setCurrentProject(newProject);
         setVisible(true);
         setFormInfo("");
