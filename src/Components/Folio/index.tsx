@@ -48,6 +48,10 @@ function Folio() {
     setVisible(false);
   };
 
+  const reFetch = () => {
+    setUpdateProjects(updateProjects + 1);
+  };
+
   return (
     <>
       <FormWrap setCurrentProject={setCurrentProject} setVisible={setVisible} />
