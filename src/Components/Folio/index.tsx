@@ -46,6 +46,7 @@ function Folio() {
 
   const onClose = () => {
     setVisible(false);
+    setCurrentProject(undefined);
   };
 
   const reFetch = () => {
