@@ -54,7 +54,11 @@ function Folio() {
 
   return (
     <>
-      <FormWrap setCurrentProject={setCurrentProject} setVisible={setVisible} />
+      <FormWrap
+        reFetch={reFetch}
+        setCurrentProject={setCurrentProject}
+        setVisible={setVisible}
+      />
 
       <CardContainer>
         {isLoaded === false ? (
@@ -79,6 +83,7 @@ function Folio() {
           visible={visible}
           onClose={onClose}
           project={currentProject}
+          reFetch={reFetch}
         />
       )}
     </>

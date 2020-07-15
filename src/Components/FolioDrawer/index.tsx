@@ -10,6 +10,7 @@ import FolioDrawerForm from "../FolioDrawerForm";
 interface FolioDrawerProps {
   visible: boolean;
   onClose: any;
+  reFetch: any;
   project: {
     id: string;
     ano: string;
@@ -54,6 +55,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
         tools={tools}
         setTools={setTools}
         project={props.project}
+        reFetch={props.reFetch}
       />
 
       <Popconfirm
