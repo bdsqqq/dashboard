@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const InputWrapper = styled.div`
   display: flex;
-  flex-flow: nowrap;
+  flex-flow: wrap;
   align-items: center;
 `;
 

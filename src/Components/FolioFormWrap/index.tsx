@@ -11,10 +11,18 @@ import InputWrapper from "../FolioFormInputWrapper";
 import ButtonCreate from "../FolioFormButtonCreate";
 import Input from "../FolioFormInput";
 
+const breakpoints = [48, 64];
+
+const mq = breakpoints.map((bp) => `@media (min-width: ${bp}em)`);
+
 const FormWrap = styled.div`
   max-width: 800px;
-  margin: 8rem 8rem 4rem;
+  margin: 2rem auto;
   height: 20vh;
+
+  ${mq[0]} {
+    margin: 8rem 8rem 4rem;
+  }
 `;
 
 const createNewProject = (id: string) => {

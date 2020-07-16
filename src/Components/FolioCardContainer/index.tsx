@@ -10,12 +10,16 @@ const CardContainer = styled.div`
   min-height: 24rem;
   height: auto;
   margin: 0 auto;
-  padding: 0 8em;
+  padding: 1rem 2rem;
 
   display: flex;
   flex-wrap: wrap;
 
   grid-template-columns: repeat(auto-fit, minmax(8rem, 24rem));
+
+  ${mq[0]} {
+    padding: 1rem 8em;
+  }
 
   @supports (display: grid) {
     display: grid;

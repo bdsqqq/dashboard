@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const InputNewId = styled.input`
-  width: 100%;
+  width: 90%;
   border: none;
   border-bottom: 2px solid #bebed2;
   padding: 5px;
