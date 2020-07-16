@@ -39,7 +39,10 @@ const FolioFormWrap = (props: any) => {
 
   const createProjectOnDb = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (inputRef.current.value === "") return;
+    if (inputRef.current.value === "") {
+      message.warn("O projeto precisa de um nome...");
+      return;
+    }
 
     let newProject = createNewProject(inputRef.current.value);
 
