@@ -36,10 +36,11 @@ const FolioDrawer = (props: FolioDrawerProps) => {
       .then(() => {
         props.onClose();
         props.reFetch();
-        console.log("Document successfully deleted!");
+        message.success("Documento deletado com sucesso!");
       })
       .catch((error) => {
-        console.error("Error removing document: ", error);
+        message.error("Ocorreu um erro inesperado");
+        console.log(error);
       });
   };
 
