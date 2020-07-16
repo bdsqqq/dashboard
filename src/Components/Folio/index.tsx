@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Spin } from "antd";
 import { db } from "../../firebase";
 
 import CardContainer from "../FolioCardContainer";
@@ -6,7 +7,6 @@ import CardContainer from "../FolioCardContainer";
 import FormWrap from "../FolioFormWrap";
 
 import Card from "../FolioCard";
-import Loader from "../LoaderFolioCard";
 import FolioDrawer from "../FolioDrawer";
 
 interface Project {
@@ -62,8 +62,8 @@ function Folio() {
       />
 
       <CardContainer>
+        {isLoaded === false ? (
           <Spin />
-          </>
         ) : (
           projects.map((project) => (
             <Card
