@@ -27,7 +27,7 @@ interface FolioDrawerProps {
 }
 
 const FolioDrawer = (props: FolioDrawerProps) => {
-  console.log("FolioDrawer reRendered");
+  const isMobile = useResizer();
 
   const [tools, setTools] = useState([...props.project.tools]);
 
@@ -48,7 +48,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
 
   return (
     <Drawer
-      width={640}
+      width={isMobile ? "90%" : "40%"}
       placement="right"
       closable={false}
       onClose={props.onClose}
