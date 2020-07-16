@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { message } from "antd";
 
 import { db } from "../../firebase";
 
@@ -19,10 +20,12 @@ const postChangesToDataBase = (changes: object, projectId: string) => {
   return projectRef
     .update(changes)
     .then(() => {
+      message.success("Documento atualizado com sucesso!");
       console.log("Document successfully updated!");
     })
     .catch((error) => {
       // The document probably doesn't exist.
+      message.success("Occorreu um erro inesperado.");
       console.error("Error updating document: ", error);
     });
 };
@@ -71,7 +74,7 @@ const FolioDrawerForm = (props: any) => {
       postChangesToDataBase(changes, props.project?.id);
       props.reFetch();
     } else {
-      console.log("não houve mudança");
+      message.warning("Não foram feitas mudanças");
     }
   };
 
