@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { FiPlus } from "react-icons/fi";
 import { db } from "../../firebase";
@@ -8,7 +8,6 @@ import iconStyles from "../../IconStyles";
 
 import Form from "../Form";
 import InputWrapper from "../FolioFormInputWrapper";
-import FormInfo from "../FolioFormInfo";
 import ButtonCreate from "../FolioFormButtonCreate";
 import Input from "../FolioFormInput";
 
@@ -35,7 +34,6 @@ const createNewProject = (id: string) => {
 
 const FolioFormWrap = (props: any) => {
   const { setCurrentProject, setVisible } = props;
-  const [formInfo, setFormInfo] = useState("");
 
   const inputRef: React.MutableRefObject<any | undefined> = useRef(); //type is any beacuse i'm using StyledComponents and HTMLInputElement doesn't work. <StyledComponent<Input, any, {}, never> doesn't work either
 
@@ -73,14 +71,6 @@ const FolioFormWrap = (props: any) => {
             <FiPlus style={iconStyles as React.CSSProperties} />
           </ButtonCreate>
         </InputWrapper>
-        <FormInfo>{formInfo}</FormInfo>
-        <input
-          type={"button"}
-          onClick={() => {
-            setFormInfo("Houve um erro inesperado, tente novamente");
-          }}
-          value={"Test feature"}
-        />
       </Form>
     </FormWrap>
   );
