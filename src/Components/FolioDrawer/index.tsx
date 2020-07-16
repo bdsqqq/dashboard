@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Drawer, Popconfirm, message } from "antd";
 
+import useResizer from "../../hooks/useResizer";
+
 import { db } from "../../firebase";
 
 import "antd/dist/antd.css";
