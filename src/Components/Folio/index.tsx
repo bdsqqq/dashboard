@@ -62,10 +62,7 @@ function Folio() {
       />
 
       <CardContainer>
-        {isLoaded === false ? (
-          <>
-            {" "}
-            <Loader /> <Loader /> <Loader />
+          <Spin />
           </>
         ) : (
           projects.map((project) => (
