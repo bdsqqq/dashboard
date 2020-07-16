@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 import { FiPlus } from "react-icons/fi";
 import { db } from "../../firebase";
+import { message } from "antd";
 
 import iconStyles from "../../IconStyles";
 
@@ -51,10 +52,10 @@ const FolioFormWrap = (props: any) => {
         props.reFetch();
         setCurrentProject(newProject);
         setVisible(true);
-        setFormInfo("");
+        message.success("Projeto criado com sucesso!");
       })
       .catch((err) => {
-        setFormInfo("Houve um erro inesperado, tente novamente");
+        message.error("Houve um erro inesperado, tente novamente");
       });
   };
 
