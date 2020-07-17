@@ -7,7 +7,7 @@ const ToolsWrapper = styled.div`
 
   width: 100%;
   padding: 10px -1em;
-  margin: -1em auto 0;
+  margin: -1em auto 1em;
 `;
 
 const FolioDrawerToolsWrapper = (props: any) => {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Drawer, Popconfirm, message } from "antd";
+import { Drawer, message } from "antd";
 
 import useResizer from "../../hooks/useResizer";
 
@@ -61,20 +61,8 @@ const FolioDrawer = (props: FolioDrawerProps) => {
         setTools={setTools}
         project={props.project}
         reFetch={props.reFetch}
+        handleDelete={handleDelete}
       />
-
-      <Popconfirm
-        placement="top"
-        icon={null}
-        title="Deletar esse projeto?"
-        okText="Sim"
-        cancelText="Não"
-        onConfirm={handleDelete}
-      >
-        <button>Delete</button>
-      </Popconfirm>
-
-      <button onClick={() => console.log(tools)}>Print Tools State</button>
     </Drawer>
   );
 };

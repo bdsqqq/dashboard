@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { message } from "antd";
+import { message, Popconfirm } from "antd";
 
 import { db } from "../../firebase";
 
@@ -13,6 +13,8 @@ import Input from "../FolioDrawerInput";
 
 import FakeInput from "../FolioDrawerFakeInput";
 import Tools from "../FolioDrawerFormTools";
+
+import Button from "../Button";
 
 const postChangesToDataBase = (changes: object, projectId: string) => {
   let projectRef = db.collection("projects").doc(projectId);
@@ -142,7 +144,29 @@ const FolioDrawerForm = (props: any) => {
       <Label>Tools</Label>
       <Tools tools={tools} setTools={setTools} />
 
-      <button type="submit">Hej Do</button>
+      <Button
+        text="Salvar!"
+        type="submit"
+        color="#00ad7c"
+        textColor="#f3f3f3"
+      />
+      <Popconfirm
+        placement="top"
+        icon={null}
+        title="Deletar esse projeto?"
+        okText="Sim"
+        cancelText="Não"
+        onConfirm={props.handleDelete}
+      >
+        <a href="#deletarProjeto">
+          <Button
+            text="Deletar Projeto"
+            type="button"
+            color="#bf1650"
+            textColor="#f3f3f3"
+          />
+        </a>
+      </Popconfirm>
     </Form>
   );
 };
