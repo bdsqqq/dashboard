@@ -144,29 +144,37 @@ const FolioDrawerForm = (props: any) => {
       <Label>Tools</Label>
       <Tools tools={tools} setTools={setTools} />
 
-      <Button
-        text="Salvar!"
-        type="submit"
-        color="#00ad7c"
-        textColor="#f3f3f3"
-      />
-      <Popconfirm
-        placement="top"
-        icon={null}
-        title="Deletar esse projeto?"
-        okText="Sim"
-        cancelText="Não"
-        onConfirm={props.handleDelete}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          width: "100%",
+        }}
       >
-        <a href="#deletarProjeto">
-          <Button
-            text="Deletar Projeto"
-            type="button"
-            color="#bf1650"
-            textColor="#f3f3f3"
-          />
-        </a>
-      </Popconfirm>
+        <Button
+          text="Salvar!"
+          type="submit"
+          color="#00ad7c"
+          textColor="#f3f3f3"
+        />
+        <Popconfirm
+          placement="top"
+          icon={null}
+          title="Deletar esse projeto?"
+          okText="Sim"
+          cancelText="Não"
+          onConfirm={props.handleDelete}
+        >
+          <a href="#deletarProjeto">
+            <Button
+              text="Deletar Projeto"
+              type="button"
+              color="#bf1650"
+              textColor="#f3f3f3"
+            />
+          </a>
+        </Popconfirm>
+      </div>
     </Form>
   );
 };
