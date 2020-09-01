@@ -8,22 +8,13 @@ import { db } from "../../firebase";
 import "antd/dist/antd.css";
 
 import FolioDrawerForm from "../FolioDrawerForm";
+import { Project } from "../../project";
 
 interface FolioDrawerProps {
   visible: boolean;
   onClose: any;
   reFetch: any;
-  project: {
-    id: string;
-    ano: string;
-    demo: string;
-    img: string;
-    projeto: string;
-    role: string;
-    source: string;
-    tools: string[];
-    order: string;
-  };
+  project: Project;
 }
 
 const FolioDrawer = (props: FolioDrawerProps) => {
