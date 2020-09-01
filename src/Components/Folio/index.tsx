@@ -9,17 +9,7 @@ import FormWrap from "../FolioFormWrap";
 import Card from "../FolioCard";
 import FolioDrawer from "../FolioDrawer";
 
-interface Project {
-  id: string;
-  ano: string;
-  demo: string;
-  img: string;
-  projeto: string;
-  role: string;
-  source: string;
-  tools: string[];
-  order: string;
-}
+import { Project } from "../../project";
 
 function Folio() {
   const [visible, setVisible] = useState<boolean>(false);
