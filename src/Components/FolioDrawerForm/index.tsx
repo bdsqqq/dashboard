@@ -39,11 +39,11 @@ const FolioDrawerForm = (props: any) => {
   const arraysAreEqual = useCompareArrays();
 
   const refs = {
-    refProjeto: useRef<any>(),
+    refName: useRef<any>(),
     refDemo: useRef<any>(),
     refSource: useRef<any>(),
     refImg: useRef<any>(),
-    refAno: useRef<any>(),
+    refYear: useRef<any>(),
     refOrder: useRef<any>(),
     refRole: useRef<any>(),
   };
@@ -85,12 +85,12 @@ const FolioDrawerForm = (props: any) => {
       <Label>Id</Label>
       <FakeInput>{props.project?.id}</FakeInput>
 
-      <Label>Projeto</Label>
+      <Label>Name</Label>
       <Input
-        name="projeto"
-        defaultValue={props.project?.projeto}
-        ref={refs.refProjeto}
-        id="inputProjeto"
+        name="name"
+        defaultValue={props.project?.name}
+        ref={refs.refName}
+        id="inputName"
         type="text"
       />
       <Label>Demo link</Label>
@@ -117,12 +117,12 @@ const FolioDrawerForm = (props: any) => {
         id="inputLink"
         type="text"
       />
-      <Label>Ano</Label>
+      <Label>Year</Label>
       <Input
-        name="ano"
-        defaultValue={props.project?.ano}
-        ref={refs.refAno}
-        id="inputAno"
+        name="year"
+        defaultValue={props.project?.year}
+        ref={refs.refYear}
+        id="inputYear"
         type="text"
       />
       <Label>Order</Label>
