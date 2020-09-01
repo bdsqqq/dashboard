@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FiEdit3 } from "react-icons/fi";
 
 import iconStyles from "../../IconStyles";
+import { Project } from "../../project";
 
 const MetaWrapper = styled.div`
   position: absolute;
@@ -66,7 +67,7 @@ const IconContainer = styled.div`
 const MetaName = styled.div``;
 
 interface FolioCardProps {
-  project: any;
+  project: Project;
 
   setVisible: any;
   setCurrentProject: any;
@@ -77,11 +78,11 @@ function Card(props: FolioCardProps) {
     <CardWrapper>
       <CardImage
         src={props.project.img}
-        alt={"Imagem do projeto " + props.project.projeto}
+        alt={"Imagem do projeto " + props.project.name}
       />
       <MetaWrapper>
         <Meta>
-          <MetaName>{props.project.projeto}</MetaName>
+          <MetaName>{props.project.name}</MetaName>
           <IconContainer>
             <FiEdit3
               style={iconStyles as React.CSSProperties}
