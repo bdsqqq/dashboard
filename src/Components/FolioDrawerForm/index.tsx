@@ -51,6 +51,7 @@ const FolioDrawerForm = (props: any) => {
     refYear: useRef<any>(),
     refOrder: useRef<any>(),
     refRole: useRef<any>(),
+    refHeight: useRef<any>(),
   };
 
   const returnChangesOnProject = (
@@ -145,6 +146,14 @@ const FolioDrawerForm = (props: any) => {
         defaultValue={props.project?.role}
         ref={refs.refRole}
         id="inputRole"
+        type="text"
+      />
+      <Label>Height</Label>
+      <Input
+        name="height"
+        defaultValue={props.project?.height}
+        ref={refs.refHeight}
+        id="inputHeight"
         type="text"
       />
       <Label>Tools</Label>
