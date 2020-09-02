@@ -15,11 +15,10 @@ function Folio() {
   const [visible, setVisible] = useState<boolean>(false);
   const [currentProject, setCurrentProject] = useState<Project>();
   const [isLoaded, setIsloaded] = useState(false);
-  const [updateProjects, setUpdateProjects] = useState(0);
 
   const [projects, setProjects] = useState<Project[]>([]);
 
-  useEffect(() => {
+  const FetchProjects = () => {
     db.collection("projects")
       .orderBy("order", "asc")
       .get()
@@ -32,7 +31,11 @@ function Folio() {
         setIsloaded(true);
         console.log(projects, "fetched projects");
       });
-  }, [updateProjects]);
+  };
+
+  useEffect(() => {
+    FetchProjects();
+  }, []);
 
   const onClose = () => {
     setVisible(false);
@@ -40,7 +43,7 @@ function Folio() {
   };
 
   const reFetch = () => {
-    setUpdateProjects(updateProjects + 1);
+    FetchProjects();
   };
 
   return (
