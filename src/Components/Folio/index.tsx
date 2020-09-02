@@ -15,7 +15,6 @@ function Folio() {
   const [visible, setVisible] = useState<boolean>(false);
   const [currentProject, setCurrentProject] = useState<Project>();
   const [isLoaded, setIsloaded] = useState(false);
-
   const [projects, setProjects] = useState<Project[]>([]);
 
   const FetchProjects = () => {
@@ -29,7 +28,7 @@ function Folio() {
         );
         setProjects(projects);
         setIsloaded(true);
-        console.log(projects, "fetched projects");
+        //console.log(projects, "fetched projects");
       });
   };
 

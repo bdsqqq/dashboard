@@ -63,12 +63,12 @@ const FolioDrawerForm = (props: any) => {
     Object.entries(refs).forEach(([refKey, refValue]: any) => {
       if (refValue.current.value !== refValue.current.defaultValue) {
         tempChanges[refValue.current.name] = refValue.current.value;
-        console.log(refKey, "added");
+        //console.log(refKey, "added");
       }
     });
     if (!arraysAreEqual(currentTools, defaultTools)) {
       tempChanges["tools"] = currentTools;
-      console.log("tool Changes", tempChanges["tools"]);
+      //console.log("tool Changes", tempChanges["tools"]);
     }
     return tempChanges;
   };
