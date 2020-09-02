@@ -53,6 +53,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
         project={props.project}
         reFetch={props.reFetch}
         handleDelete={handleDelete}
+        closeDrawer={props.onClose}
       />
     </Drawer>
   );
