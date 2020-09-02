@@ -16,13 +16,18 @@ import Tools from "../FolioDrawerFormTools";
 
 import Button from "../Button";
 
-const postChangesToDataBase = async (changes: object, projectId: string) => {
+const postChangesToDataBase = async (
+  changes: object,
+  projectId: string,
+  closeDrawer: any
+) => {
   let projectRef = db.collection("projects").doc(projectId);
 
   return projectRef
     .update(changes)
     .then(() => {
       message.success("Documento atualizado com sucesso!");
+      closeDrawer();
       console.log("Document successfully updated!");
     })
     .catch((error) => {
@@ -73,7 +78,7 @@ const FolioDrawerForm = (props: any) => {
     changes = returnChangesOnProject(refs, tools, props.project.tools);
 
     if (!objIsEmpty(changes)) {
-      postChangesToDataBase(changes, props.project?.id);
+      postChangesToDataBase(changes, props.project?.id, props.closeDrawer);
       props.reFetch();
     } else {
       message.warning("Não foram feitas mudanças");
