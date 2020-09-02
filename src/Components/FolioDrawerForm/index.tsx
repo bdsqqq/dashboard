@@ -16,7 +16,7 @@ import Tools from "../FolioDrawerFormTools";
 
 import Button from "../Button";
 
-const postChangesToDataBase = (changes: object, projectId: string) => {
+const postChangesToDataBase = async (changes: object, projectId: string) => {
   let projectRef = db.collection("projects").doc(projectId);
 
   return projectRef
