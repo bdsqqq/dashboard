@@ -66,7 +66,8 @@ const FolioDrawerForm = (props: any) => {
       }
     });
     if (!arraysAreEqual(currentTools, defaultTools)) {
-      tempChanges["tools"] = defaultTools;
+      tempChanges["tools"] = currentTools;
+      console.log("tool Changes", tempChanges["tools"]);
     }
     return tempChanges;
   };
