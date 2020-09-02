@@ -66,7 +66,7 @@ const FolioDrawerForm = (props: any) => {
     return tempChanges;
   };
 
-  const postChangesToDb = (event: React.FormEvent<HTMLFormElement>) => {
+  const updateDBifTheresChanges = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     let changes: any = {};
@@ -81,7 +81,7 @@ const FolioDrawerForm = (props: any) => {
   };
 
   return (
-    <Form onSubmit={postChangesToDb}>
+    <Form onSubmit={updateDBifTheresChanges}>
       <Label>Id</Label>
       <FakeInput>{props.project?.id}</FakeInput>
 
