@@ -39,7 +39,7 @@ const FolioDrawer = (props: FolioDrawerProps) => {
 
   return (
     <Drawer
-      width={isMobile ? "90%" : "40%"}
+      width={isMobile ? "90%" : "40rem"}
       placement="right"
       closable={false}
       onClose={props.onClose}
